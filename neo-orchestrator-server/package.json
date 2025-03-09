@@ -1,0 +1,31 @@
+{
+  "name": "neo-orchestrator-server",
+  "version": "0.1.0",
+  "description": "Neo Orchestrator MCP Server",
+  "main": "build/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "start": "node build/index.js",
+    "dev": "ts-node --esm src/index.ts",
+    "test": "mocha --require ts-node/register --loader=ts-node/esm --project tsconfig.test.json tests/**/*.test.ts",
+    "test:coverage": "nyc --reporter=lcov --reporter=text npm test"
+  },
+  "keywords": ["mcp", "neo", "orchestrator"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "latest",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.11",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.10.5",
+    "chai": "^4.3.10",
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
