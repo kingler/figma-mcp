@@ -39,4 +39,20 @@ pids/
 *.tsbuildinfo
 
 # Docker volumes
-data/ 
+data/
+
+# Ignore environment files and API keys
+.env.*
+*.env
+# Common API key patterns
+*apikey*
+*api_key*
+*API_KEY*
+*secret*
+*SECRET*
+*token*
+*TOKEN*
+*credentials*
+*credential*
+*private*
+*PRIVATE* 

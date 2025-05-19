@@ -50,7 +50,11 @@ Components are generated based on Figma designs using atomic design principles:
 
 ## Using the Integration Script
 
-The `scripts/agent-integration.js` script provides a unified interface for the multi-agent workflow:
+The integration script now lives at the monorepo root-level scripts directory:
+
+`/Users/kinglerbercy/MCP/scripts/agent-integration.js`
+
+Use the following commands from the monorepo root:
 
 ```bash
 # Check if all agent servers are running
