@@ -1,0 +1,11 @@
+this script use a set coordinate for claude computer use to go to which is the etxt input box for cursor composer. 
+
+so 
+1- first use the get_coordinatesfile to get the coordinates of the text input box for cursor agent when it will be at the bottom(for example after a single resposne)in your screen(this script is designed for 1920x1080 screen resolution)
+
+2- then just update the cordinates in use_yourself.py file
+
+3- then try this as an example as instructions to cursor conmposer in agent mode:
+"use yourself to instruct the use yourself function to instruct you to build a tower defense game in pygame"
+
+WARNING: COMPUTER USE IS INSTRUCTED TO ONLY USE THE TEXT INPUT BOX AND CTA BUTTONS.

@@ -1,0 +1,13 @@
+{
+  "servers": {
+    "neo-orchestrator-mcp-stdio": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["${workspaceFolder}/dist/index.js"]
+    }
+    // "neo-orchestrator-mcp-streamable-http": {
+    //   "type": "http",
+    //   "url": "http://localhost:3088/mcp"
+    // },
+  }
+}

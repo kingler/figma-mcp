@@ -1,0 +1,31 @@
+{
+  "name": "pocketflow-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for PocketFlow",
+  "main": "dist/mcp-server.js",
+  "bin": {
+    "pocketflow-mcp": "dist/mcp-server.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/mcp-server.js",
+    "dev": "tsc && node dist/mcp-server.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "pocketflow",
+    "llm",
+    "ai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "typescript": "^5.7.3"
+  }
+}

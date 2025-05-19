@@ -1,0 +1,34 @@
+{
+  "name": "code-quality-analyst-server",
+  "version": "1.0.0",
+  "description": "MCP server for code review, static analysis, and quality metrics tracking",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "start": "node build/index.js",
+    "dev": "ts-node --esm src/index.ts",
+    "test": "jest"
+  },
+  "keywords": [
+    "mcp",
+    "code-quality",
+    "static-analysis",
+    "code-review",
+    "metrics"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "latest",
+    "axios": "latest",
+    "yaml": "latest",
+    "esprima": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/esprima": "latest",
+    "ts-node": "latest",
+    "typescript": "latest"
+  }
+}

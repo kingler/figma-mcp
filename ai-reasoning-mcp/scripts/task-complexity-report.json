@@ -1,0 +1,203 @@
+{
+  "meta": {
+    "generatedAt": "2025-05-11T14:25:50.124Z",
+    "tasksAnalyzed": 24,
+    "thresholdScore": 5,
+    "projectName": "Your Project Name",
+    "usedResearch": false
+  },
+  "complexityAnalysis": [
+    {
+      "taskId": 4,
+      "taskTitle": "Implement Fact Database with Evidence Links",
+      "complexityScore": 7,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the implementation of a fact database with evidence links into specific technical subtasks, including database schema design, API development, metadata handling, query optimization, and integration with existing systems.",
+      "reasoning": "This task involves extending a knowledge base with complex metadata features including confidence scoring, evidence links, and versioning. It requires database design skills, API development, and careful consideration of query performance. The task has multiple interconnected components but a clear scope."
+    },
+    {
+      "taskId": 5,
+      "taskTitle": "Develop Rule Repository with Inference Capabilities",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Divide the development of a rule repository system with inference capabilities into concrete subtasks covering rule representation, storage mechanisms, inference algorithms (forward/backward chaining), validation logic, domain-specific rule management, and integration points.",
+      "reasoning": "This task requires implementing a sophisticated rule system with inference capabilities, which involves complex logical operations, rule validation, and multiple inference methods. The need to support domain-specific rule sets and conflict detection adds significant complexity."
+    },
+    {
+      "taskId": 6,
+      "taskTitle": "Implement Basic Deductive Reasoning Engine",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the implementation of a basic deductive reasoning engine into specific subtasks covering logical rule application, reasoning trace generation, consistency validation, syllogism handling, knowledge base integration, and testing framework.",
+      "reasoning": "Implementing a deductive reasoning engine involves complex logical operations, step-by-step reasoning traces, and validation mechanisms. The integration with the knowledge base adds another layer of complexity. This is a core component with multiple dependencies and high priority."
+    },
+    {
+      "taskId": 7,
+      "taskTitle": "Implement Advanced Reasoning Methods",
+      "complexityScore": 9,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Divide the implementation of advanced reasoning methods (inductive, abductive, and analogical) into specific subtasks covering algorithm design, pattern recognition, confidence scoring, integration with existing reasoning systems, testing, optimization, and documentation.",
+      "reasoning": "This task extends the reasoning engine with multiple complex reasoning methods, each requiring different algorithms and approaches. Implementing inductive, abductive, and analogical reasoning together with confidence scoring represents significant algorithmic complexity and requires deep understanding of different reasoning paradigms."
+    },
+    {
+      "taskId": 8,
+      "taskTitle": "Develop Counterfactual Reasoning System",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the development of a counterfactual reasoning system into specific subtasks covering scenario generation, temporary knowledge base modifications, divergence tracking, branch evaluation, comparative analysis, and isolation mechanisms.",
+      "reasoning": "Counterfactual reasoning requires sophisticated handling of hypothetical scenarios while maintaining isolation from factual knowledge. The need to track divergence, evaluate multiple branches, and generate comparative analyses adds significant complexity. This builds on existing reasoning capabilities but introduces new conceptual challenges."
+    },
+    {
+      "taskId": 9,
+      "taskTitle": "Implement Option Analysis and Decision Support",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Divide the implementation of an option analysis and decision support system into specific subtasks covering option generation, evaluation criteria framework, risk assessment algorithms, trade-off analysis, constraint validation, and justification generation.",
+      "reasoning": "This task involves creating a complex decision support system that must generate and evaluate multiple options, perform risk assessment, analyze trade-offs, and validate against constraints. The requirement to generate justifications with supporting evidence adds another layer of complexity."
+    },
+    {
+      "taskId": 10,
+      "taskTitle": "Implement Ethical Framework",
+      "complexityScore": 9,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Break down the implementation of an ethical framework into specific subtasks covering ethical principle representation, validation algorithms, impact analysis methods, alignment verification, bias detection, ethical reasoning trail generation, and support for multiple ethical frameworks.",
+      "reasoning": "Implementing an ethical framework involves complex conceptual challenges in representing and reasoning about ethical principles. Supporting multiple ethical frameworks (utilitarian, deontological, etc.) adds significant complexity. Bias detection and impact analysis require sophisticated algorithms and careful design."
+    },
+    {
+      "taskId": 11,
+      "taskTitle": "Develop Plugin Architecture",
+      "complexityScore": 7,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Divide the development of a plugin architecture into specific subtasks covering extension point design, plugin interface definition, discovery and registration mechanisms, lifecycle management, compatibility validation, and hot-reloading implementation.",
+      "reasoning": "Creating an extensible plugin system requires careful architectural design to ensure clean extension points, proper lifecycle management, and compatibility validation. While technically complex, the scope is well-defined and focuses on system architecture rather than domain-specific logic."
+    },
+    {
+      "taskId": 12,
+      "taskTitle": "Implement Performance Optimization and Caching",
+      "complexityScore": 7,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the implementation of performance optimization and caching into specific subtasks covering caching layer design, reasoning algorithm optimization, resource management, query planning, memory usage optimization, and background processing implementation.",
+      "reasoning": "Performance optimization requires deep understanding of system bottlenecks and careful implementation of various optimization strategies. The task spans multiple components (caching, query planning, resource management) and requires both algorithmic improvements and system-level optimizations."
+    },
+    {
+      "taskId": 13,
+      "taskTitle": "Develop Monitoring and Management System",
+      "complexityScore": 6,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Divide the development of a monitoring and management system into specific subtasks covering structured logging implementation, metrics collection, health monitoring, alerting system, analytics dashboard, and administrative interface.",
+      "reasoning": "This task involves implementing comprehensive logging, metrics collection, and system monitoring. While it spans multiple components, the techniques are well-established and the requirements are clear. The administrative interface adds some complexity but the overall task is relatively straightforward."
+    },
+    {
+      "taskId": 14,
+      "taskTitle": "Implement Security Features",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the implementation of security features into specific subtasks covering access control system, input validation framework, secure storage mechanisms, protection against common attacks, security update mechanism, and rate limiting/abuse prevention.",
+      "reasoning": "Security implementation requires careful attention to multiple aspects including access control, input validation, and protection against various attack vectors. The high priority and broad scope across different security domains makes this a complex task requiring specialized knowledge."
+    },
+    {
+      "taskId": 15,
+      "taskTitle": "Create Comprehensive Documentation and Examples",
+      "complexityScore": 6,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Divide the creation of comprehensive documentation into specific subtasks covering API reference documentation, usage examples, integration guides, deployment instructions, configuration reference, and interactive examples.",
+      "reasoning": "While this task has many dependencies and covers a wide range of documentation types, the technical complexity is moderate. The challenge lies in ensuring completeness, clarity, and accuracy across different documentation components rather than in implementing complex algorithms."
+    },
+    {
+      "taskId": 16,
+      "taskTitle": "Implement Rejection Sampling Algorithm and Integration",
+      "complexityScore": 7,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down the implementation of a rejection sampling algorithm and its integration into specific subtasks covering core algorithm implementation, distribution interface design, integration with the reasoning engine, optimization strategies, and testing/validation framework.",
+      "reasoning": "This task involves implementing a statistical sampling algorithm and integrating it with the existing reasoning framework. It requires understanding of probability theory and optimization techniques. The scope is well-defined but the mathematical complexity and integration requirements make it moderately complex."
+    },
+    {
+      "taskId": 17,
+      "taskTitle": "Implement Reward Model System for AI Feedback",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Divide the implementation of a reward model system for AI feedback into specific subtasks covering neural network architecture design, preference model implementation, training pipeline development, feedback collection interface, evaluation metrics, and integration with existing systems.",
+      "reasoning": "This task requires implementing a sophisticated neural network-based reward model with complex components including transformer architecture, preference learning, and human feedback integration. The machine learning aspects and the need to handle continuous feedback incorporation add significant complexity."
+    },
+    {
+      "taskId": 18,
+      "taskTitle": "Implement Rules Tables Mechanism",
+      "complexityScore": 7,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the implementation of a Rules Tables mechanism into specific subtasks covering table structure definition, validation logic, table population APIs, query mechanisms, knowledge base integration, and reasoning engine integration.",
+      "reasoning": "This task involves creating a structured rule storage system with validation, querying, and integration capabilities. The complexity comes from designing a flexible schema system, implementing efficient querying, and ensuring proper integration with both the knowledge base and reasoning engine."
+    },
+    {
+      "taskId": 19,
+      "taskTitle": "Implement Sequential Thinking Framework",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Divide the implementation of a Sequential Thinking Framework into specific subtasks covering step-by-step reasoning engine design, dependency tracking system, checkpoint validation mechanisms, reasoning path management, integration interfaces, and visualization components.",
+      "reasoning": "This task requires implementing a sophisticated framework for step-by-step reasoning with complex features like dependency tracking, checkpoint validation, and branching paths. The need to handle both linear and branching reasoning paths while maintaining proper dependency tracking adds significant complexity."
+    },
+    {
+      "taskId": 20,
+      "taskTitle": "Implement Comprehensive Testing Framework for Reasoning System",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the implementation of a comprehensive testing framework into specific subtasks covering unit testing infrastructure, integration test framework, scenario-based test development, property-based testing implementation, oracle testing system, and benchmarking infrastructure.",
+      "reasoning": "Creating a multi-layered testing framework for a complex reasoning system requires sophisticated test design across different testing methodologies. The need to implement property-based testing, oracle testing, and comprehensive benchmarking adds significant complexity beyond standard testing approaches."
+    },
+    {
+      "taskId": 21,
+      "taskTitle": "Implement Cognitive Error Prevention Framework",
+      "complexityScore": 9,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Divide the implementation of a Cognitive Error Prevention Framework into specific subtasks covering bias detection algorithms, logical fallacy identification patterns, uncertainty quantification models, correction suggestion mechanisms, integration APIs, visualization components, and evaluation methodology.",
+      "reasoning": "This task involves implementing sophisticated algorithms for detecting cognitive biases and logical fallacies, along with uncertainty quantification and correction mechanisms. The conceptual complexity of modeling cognitive errors and developing effective prevention strategies makes this a highly complex task."
+    },
+    {
+      "taskId": 22,
+      "taskTitle": "Implement Semantic Reasoning Framework for BDI Multi-Agent LLM Systems",
+      "complexityScore": 10,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Break down the implementation of a Semantic Reasoning Framework for BDI Multi-Agent LLM Systems into specific subtasks covering belief representation, desire/goal formation, intention selection, agent communication protocols, role assignment mechanisms, goal resolution engine, and semantic interpretation module.",
+      "reasoning": "This task combines multiple complex domains: BDI agent architecture, multi-agent coordination, semantic reasoning, and large language model integration. The need to implement belief revision, desire formation, intention selection, and multi-agent coordination makes this one of the most complex tasks in the set."
+    },
+    {
+      "taskId": 23,
+      "taskTitle": "Implement Comprehensive Observability Framework for AI Reasoning System",
+      "complexityScore": 7,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Divide the implementation of a Comprehensive Observability Framework into specific subtasks covering structured logging system, metrics collection infrastructure, reasoning trace visualization, monitoring dashboard development, and debugging tools implementation.",
+      "reasoning": "This task involves implementing various observability components including logging, metrics, visualization, and debugging tools. While it spans multiple technical areas, each component has well-established patterns. The complexity comes from ensuring comprehensive coverage and integration across all system components."
+    },
+    {
+      "taskId": 24,
+      "taskTitle": "Implement Mental Models Framework",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down the implementation of a Mental Models Framework into specific subtasks covering model representation structures, application mechanics, selection logic algorithms, reasoning engine integration, visualization components, and evaluation methodology.",
+      "reasoning": "This task requires implementing a sophisticated framework for representing and applying mental models in reasoning. The need to develop model selection logic, application mechanics, and integration with the reasoning engine involves complex conceptual challenges and algorithmic design."
+    },
+    {
+      "taskId": 25,
+      "taskTitle": "Implement Algorithmic Axiom System with Validation and Reasoning Integration",
+      "complexityScore": 9,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Divide the implementation of an Algorithmic Axiom System into specific subtasks covering formal axiom representation, parsing mechanisms, validation algorithms, consistency checking, dependency analysis, reasoning engine integration, and query interface development.",
+      "reasoning": "This task involves implementing a formal axiom system with complex logical operations including validation, consistency checking, and integration with reasoning. The need to parse natural language into formal logical representations and verify logical consistency across the axiom set represents significant complexity."
+    },
+    {
+      "taskId": 26,
+      "taskTitle": "Implement Probabilistic Error Prevention Framework",
+      "complexityScore": 9,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Break down the implementation of a Probabilistic Error Prevention Framework into specific subtasks covering Bayesian inference methods, probabilistic graphical model implementation, error likelihood estimation algorithms, adaptive correction strategies, integration APIs, evaluation methodology, and optimization techniques.",
+      "reasoning": "This task requires implementing sophisticated probabilistic reasoning methods including Bayesian inference and probabilistic graphical models. The need to quantify uncertainty, estimate error likelihood, and implement adaptive correction strategies involves complex statistical algorithms and careful system design."
+    },
+    {
+      "taskId": 27,
+      "taskTitle": "Implement BDI Multiagent Framework Core Components for SDLC LLM Systems",
+      "complexityScore": 10,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Divide the implementation of BDI Multiagent Framework Core Components into specific subtasks covering agent lifecycle management, belief system implementation, desire/goal management, intention & planning components, agent coordination framework, integration with LLM systems, and evaluation methodology.",
+      "reasoning": "This task combines multiple complex domains: BDI agent architecture, multi-agent systems, software development lifecycle integration, and large language model integration. The need to implement agent lifecycle management, belief systems, goal management, planning, and coordination mechanisms makes this extremely complex."
+    }
+  ]
+}

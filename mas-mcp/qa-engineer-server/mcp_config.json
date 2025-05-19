@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "qa-engineer": {
+      "command": "node",
+      "args": ["build/index.js"],
+      "env": {
+        "OPENAI_API_KEY": "sk-proj-rvtLIYPk02tA1Kor6b2iT3BlbkFJyR2T0BWUgEyLO3zGBzUN",
+        "ANTHROPIC_API_KEY": "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",
+        "DEFAULT_PROVIDER_TYPE": "openai",
+        "DEFAULT_MODEL": "gpt-4o",
+        "DEFAULT_TEMPERATURE": "0.2",
+        "DEFAULT_MAX_TOKENS": "8000"
+      },
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}

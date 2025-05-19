@@ -1,0 +1,70 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Figma MCP Server Integration
+
+Use the global figma-mcp-unified server to interact with Figma API.
+
+## Available Tools
+
+The Figma MCP server provides several categories of tools:
+
+### File Tools
+- `get-file`: Retrieve a Figma file by key
+- `list-files`: List files in a Figma project or team
+- `get-file-nodes`: Get specific nodes from a Figma file
+- `get-file-comments`: Get comments for a Figma file
+- `post-file-comment`: Post a comment on a Figma file
+- `get-file-versions`: Get version history for a Figma file
+- `export-file-images`: Export images from a Figma file
+- `get-image-fills`: Get image fill URLs from a Figma file
+
+### Component Tools
+- `get-component`: Get details for a specific component by key
+- `get-file-components`: Get all components in a Figma file
+- `get-component-instances`: Find all instances of a component in a file
+- `analyze-component-structure`: Analyze the structure of a component
+- `get-component-sets`: Get component sets (variants) in a file
+- `get-file-styles`: Get all styles in a Figma file
+
+### Variable Tools
+- `get-file-variables`: Get all variables and variable collections in a Figma file
+- `analyze-variable-usage`: Analyze how variables are used in a Figma file
+- `extract-design-tokens`: Extract design tokens from Figma variables in a structured format
+- `compare-variable-collections`: Compare variable collections across modes to find inconsistencies
+
+## Example Usage
+
+When you need to work with a Figma file:
+
+1. Get the file key from the Figma URL (after `/file/`)
+2. Use the MCP tools to extract design information
+3. Apply the design data to your code
+
+```javascript
+// Example: Using Figma design tokens in your component
+import { useState, useEffect } from 'react';
+
+function DesignSystemComponent() {
+  const [designTokens, setDesignTokens] = useState(null);
+  
+  useEffect(() => {
+    // Tokens would come from Figma MCP server
+    // extract-design-tokens tool with format: 'css'
+    setDesignTokens({
+      '--primary-color': '#0066FF',
+      '--secondary-color': '#00A3FF',
+      '--text-color': '#333333'
+    });
+  }, []);
+  
+  return (
+    <div className="design-system-example" style={designTokens}>
+      <h1>Design System Example</h1>
+      <button className="primary-button">Primary Button</button>
+    </div>
+  );
+}
+```

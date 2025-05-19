@@ -1,0 +1,29 @@
+{
+  "name": "integration-specialist-server",
+  "version": "1.0.0",
+  "description": "MCP server for managing APIs, protocols, and system integrations",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "start": "node build/index.js",
+    "dev": "ts-node --esm src/index.ts",
+    "test": "jest"
+  },
+  "keywords": [
+    "mcp",
+    "integration",
+    "api",
+    "protocols"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "ts-node": "latest",
+    "typescript": "latest"
+  }
+}

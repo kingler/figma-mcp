@@ -1,0 +1,60 @@
+{
+  "name": "@illuminaresolutions/n8n-mcp-server",
+  "description": "An MCP server that provides access to n8n workflows, executions, credentials, and more through the Model Context Protocol",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "n8n-mcp-server": "build/index.js",
+    "n8n-mcp-client": "build/client.js",
+    "n8n-mcp-test": "build/test.js"
+  },
+  "files": [
+    "build",
+    "README.md",
+    "LICENSE"
+  ],
+  "license": "MIT",
+  "author": "Illuminare Solutions",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/illuminaresolutions/n8n-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/illuminaresolutions/n8n-mcp-server/issues"
+  },
+  "homepage": "https://github.com/illuminaresolutions/n8n-mcp-server#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "n8n",
+    "mcp",
+    "automation",
+    "workflow",
+    "llm",
+    "ai",
+    "claude",
+    "modelcontextprotocol"
+  ],
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js build/client.js build/test.js",
+    "start": "node build/index.js",
+    "client": "node build/client.js",
+    "test": "node build/test.js",
+    "prepublishOnly": "npm run build",
+    "clean": "rm -rf build",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.7.0",
+    "zod": "^3.22.4",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "typescript": "^5.3.3"
+  }
+}

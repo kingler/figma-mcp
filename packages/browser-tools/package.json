@@ -1,0 +1,26 @@
+{
+  "name": "@mcp/browser-tools",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --format cjs,esm --watch --dts",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "test": "jest",
+    "clean": "rm -rf .turbo node_modules dist"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^22.13.10",
+    "eslint": "^8.48.0",
+    "eslint-config-custom": "*",
+    "jest": "^29.5.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.8.2"
+  }
+} 

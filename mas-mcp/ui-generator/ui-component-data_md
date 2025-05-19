@@ -1,0 +1,446 @@
+
+
+
+
+
+<component_group>
+  <component>
+    <name>Accordion</name>
+    <code>
+```jsx
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
+export default function AccordionDemo() {
+  return (
+    <Accordion type="single" collapsible className="w-full">
+      <AccordionItem value="item-1">
+        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It adheres to the WAI-ARIA design pattern.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger>Is it styled?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It comes with default styles that matches the other
+          components' aesthetic.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-3">
+        <AccordionTrigger>Is it animated?</AccordionTrigger>
+        <AccordionContent>
+          Yes. It's animated by default, but you can disable it if you
+          prefer.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  )
+}
+```
+    </code>
+    <doc_url>build\gits\shadcn-ui$ui-openv0remix\docs\accordion.mdx</doc_url>
+    <design_tokens>
+      - Background-color: Inherited from theme
+      - Border-color: Potentially border tokens from theme
+      - Width: w-full (100%)
+      - Height: Auto
+      - Text color: Inherited from theme
+      - Font family: Inherited from theme
+      - Font size: Inherited from theme
+      - Animation: Default accordion animations
+    </design_tokens>
+    <atomic_design_type>Molecule</atomic_design_type>
+    <qa_section>
+      <qa>
+        <question>How do I create a FAQ section using the Accordion component?</question>
+        <answer>To create a FAQ section, use multiple AccordionItems within the Accordion component. Each AccordionItem should have a question in the AccordionTrigger and the answer in AccordionContent. Set type="single" to ensure only one accordion is open at a time, or add the collapsible prop to allow all items to be closed.</answer>
+      </qa>
+      <qa>
+        <question>Can I customize the appearance of the Accordion component?</question>
+        <answer>Yes, you can customize the Accordion by adding className props to any of the elements. For example, add background colors, padding, borders, or text styling. You can also customize the chevron icon by applying styles to AccordionTrigger.</answer>
+      </qa>
+      <qa>
+        <question>How do I make multiple accordions open at the same time?</question>
+        <answer>To allow multiple accordions to be open simultaneously, change the type prop from "single" to "multiple" and provide an array of values to the value/defaultValue prop. For example: `<Accordion type="multiple" defaultValue={["item-1", "item-2"]} />`.</answer>
+      </qa>
+      <qa>
+        <question>How can I add icons to my Accordion triggers?</question>
+        <answer>You can add icons to AccordionTrigger by simply including an icon component next to your text: `<AccordionTrigger><IconComponent className="mr-2" />Your Text Here</AccordionTrigger>`. Position the icon using flexbox utilities.</answer>
+      </qa>
+      <qa>
+        <question>Is the Accordion component accessible for screen readers?</question>
+        <answer>Yes, the Accordion component is built with accessibility in mind and follows WAI-ARIA design patterns. It provides proper keyboard navigation, ARIA attributes, and focus management required for accessible accordions.</answer>
+      </qa>
+      <qa>
+        <question>How do I disable the animation on the Accordion?</question>
+        <answer>To disable animations, you would need to override the CSS transition properties in the AccordionContent component. This can be done by adding a custom class with `transition: none !important;` or by modifying the component's source code to remove the animation logic.</answer>
+      </qa>
+      <qa>
+        <question>Can I nest accordions inside each other?</question>
+        <answer>Yes, you can nest Accordion components by placing another complete Accordion within an AccordionContent. This creates hierarchical expandable sections, though be careful about the UX implications of deeply nested accordions.</answer>
+      </qa>
+      <qa>
+        <question>How do I make certain accordion items disabled?</question>
+        <answer>To disable specific accordion items, add the `disabled` prop to the AccordionItem: `<AccordionItem value="item-1" disabled>`. This will prevent the item from being clicked or toggled.</answer>
+      </qa>
+      <qa>
+        <question>Can I use the Accordion for a mobile navigation menu?</question>
+        <answer>Yes, the Accordion component works well for mobile navigation menus. Place your navigation links inside AccordionContent components and use categories as AccordionTriggers. This creates a collapsible navigation system that preserves screen space on mobile devices.</answer>
+      </qa>
+      <qa>
+        <question>How can I add a border between accordion items?</question>
+        <answer>To add borders between accordion items, apply border classes to the AccordionItem components: `<AccordionItem className="border-b border-gray-200" value="item-1">`. This adds a bottom border to each item except the last one.</answer>
+      </qa>
+      <qa>
+        <question>What's the difference between controlled and uncontrolled accordion usage?</question>
+        <answer>In uncontrolled usage, you provide defaultValue to set the initially expanded items. For controlled usage, provide both value and onValueChange props to manage the accordion state from your component. Controlled usage gives you programmatic control over the open/closed state.</answer>
+      </qa>
+      <qa>
+        <question>How can I make the accordion open by default?</question>
+        <answer>Set the defaultValue prop to the value of the AccordionItem you want open initially: `<Accordion type="single" defaultValue="item-1" collapsible>`. This will make the first item open when the component renders.</answer>
+      </qa>
+      <qa>
+        <question>Can I add custom styling to only the open accordion item?</question>
+        <answer>Yes, the open accordion item receives data-state="open" attributes, which you can target with CSS: `[data-state="open"] { background-color: #f9fafb; }`. This allows you to style the active/open state differently.</answer>
+      </qa>
+      <qa>
+        <question>How do I programmatically open or close accordion items?</question>
+        <answer>To programmatically control accordion items, use the controlled pattern with state: `const [value, setValue] = useState("item-1"); return <Accordion type="single" value={value} onValueChange={setValue}>`. Then modify the value state variable to open/close items.</answer>
+      </qa>
+      <qa>
+        <question>Can I use Accordion for a site-wide sidebar navigation?</question>
+        <answer>Yes, Accordion works well for sidebar navigation. Structure your navigation with main categories as AccordionTriggers and nested links in AccordionContent. Use type="multiple" if you want multiple sections open at once.</answer>
+      </qa>
+      <qa>
+        <question>How do I change the chevron icon in the Accordion component?</question>
+        <answer>To replace the default chevron, you would need to modify the AccordionTrigger component in your source code. Create a custom version that replaces the ChevronDown icon with your preferred icon component while maintaining the rotation animation.</answer>
+      </qa>
+      <qa>
+        <question>Can the Accordion component handle rich content like forms or images?</question>
+        <answer>Yes, AccordionContent can contain any React components, including forms, images, or complex layouts. Simply place your rich content inside the AccordionContent component. Be mindful of layout shifts when content expands or collapses.</answer>
+      </qa>
+      <qa>
+        <question>How can I style the Accordion to match my application's design system?</question>
+        <answer>To match your design system, apply custom classes to each component: Accordion, AccordionItem, AccordionTrigger, and AccordionContent. Override colors, typography, spacing, and borders. Consider creating a themed wrapper component that applies your design system tokens.</answer>
+      </qa>
+      <qa>
+        <question>Is it possible to add a callback when an accordion item opens or closes?</question>
+        <answer>Yes, use the onValueChange prop on the Accordion component: `<Accordion onValueChange={(value) => console.log(value)}>`. This function is called whenever an item opens or closes, with the current value(s) as an argument.</answer>
+      </qa>
+      <qa>
+        <question>How do I implement an accordion that expands from side to side rather than top to bottom?</question>
+        <answer>The default Accordion expands vertically. For a horizontal accordion, you would need to create a custom implementation using the same state management pattern but with different CSS for the expand/collapse animation (using width transitions instead of height).</answer>
+      </qa>
+    </qa_section>
+  </component>
+  
+  <component>
+    <name>Alert Dialog</name>
+    <code>
+```jsx
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+import { Button } from "@/components/ui/button"
+
+export default function AlertDialogDemo() {
+  return (
+    <AlertDialog>
+      <AlertDialogTrigger asChild>
+        <Button variant="outline">Show Dialog</Button>
+      </AlertDialogTrigger>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogDescription>
+            This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Continue</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  )
+}
+```
+    </code>
+    <doc_url>build\gits\shadcn-ui$ui-openv0remix\docs\alert-dialog.mdx</doc_url>
+    <design_tokens>
+      - Background-color: Background for content and overlay
+      - Border-color: Content border
+      - Width: Dynamic with min/max constraints
+      - Height: Auto based on content
+      - Text color: Title, description and button text colors
+      - Font family: Inherited from theme
+      - Font size: Various for title, description and buttons
+      - Border radius: For content and buttons
+    </design_tokens>
+    <atomic_design_type>Organism</atomic_design_type>
+    <qa_section>
+      <qa>
+        <question>How do I create a confirmation dialog before deleting an item?</question>
+        <answer>Use the AlertDialog component with customized text. Set the AlertDialogTitle to ask for confirmation, use AlertDialogDescription to explain consequences, and set up AlertDialogAction with a handler that triggers the delete function when clicked. The AlertDialogCancel should close the dialog without taking action.</answer>
+      </qa>
+      <qa>
+        <question>Can I programmatically open and close the AlertDialog?</question>
+        <answer>Yes, use React state to control the dialog: `const [open, setOpen] = useState(false)` and then add `open={open} onOpenChange={setOpen}` props to the AlertDialog component. Call `setOpen(true)` to open it and `setOpen(false)` to close it programmatically.</answer>
+      </qa>
+      <qa>
+        <question>How do I customize the action buttons in AlertDialog?</question>
+        <answer>Customize action buttons by providing children to AlertDialogAction and AlertDialogCancel components. You can apply variants, sizes, or custom classes: `<AlertDialogAction className="bg-red-600">Delete</AlertDialogAction>`. For complete customization, use the asChild prop and provide a custom Button component.</answer>
+      </qa>
+      <qa>
+        <question>Is it possible to add custom icons to the AlertDialog?</question>
+        <answer>Yes, you can add icons by including them inside any of the components. For example, add a warning icon in the header: `<AlertDialogHeader><AlertTriangle className="h-6 w-6 text-warning mb-2" /><AlertDialogTitle>...</AlertDialogTitle></AlertDialogHeader>`</answer>
+      </qa>
+      <qa>
+        <question>How can I create a dialog with form elements inside?</question>
+        <answer>Place your form elements within the AlertDialogContent, typically between the Header and Footer. Include input fields, checkboxes, or any other form controls. For form submission, handle the onSubmit event and close the dialog on successful validation.</answer>
+      </qa>
+      <qa>
+        <question>Can AlertDialog be used for terms and conditions acceptance?</question>
+        <answer>Yes, use AlertDialog for terms acceptance by setting a descriptive title, putting terms text in the description (possibly with ScrollArea component if lengthy), and labeling the action button "I Accept". Track acceptance using state or by calling an API when the user clicks the action button.</answer>
+      </qa>
+      <qa>
+        <question>How do I make AlertDialog accessible for screen readers?</question>
+        <answer>The AlertDialog is already accessible by default with proper ARIA attributes. Ensure you provide clear, descriptive text in the title and description. The dialog traps focus correctly, and escape key dismissal is built-in. Maintain good color contrast for text and buttons.</answer>
+      </qa>
+      <qa>
+        <question>Can I display dynamic content based on the trigger in AlertDialog?</question>
+        <answer>Yes, use a controlled component approach where the trigger stores relevant data in state: `const [itemToDelete, setItemToDelete] = useState(null)`. Update this state when opening the dialog and reference it within the dialog content to display dynamic information.</answer>
+      </qa>
+      <qa>
+        <question>How do I implement a multi-step confirmation process with AlertDialog?</question>
+        <answer>For multi-step confirmation, use multiple state variables to track the current step: `const [step, setStep] = useState(1)`. Then conditionally render different content and buttons based on the step value. Each "Next" button should increment the step counter, and "Back" should decrement it.</answer>
+      </qa>
+      <qa>
+        <question>Can I change the position of the AlertDialog on the screen?</question>
+        <answer>The AlertDialog is centered by default. To change its position, you would need to style the AlertDialogContent component with CSS position utilities or custom styles like `className="absolute top-10 left-10"`. Be careful not to break the responsiveness of the dialog.</answer>
+      </qa>
+      <qa>
+        <question>How do I add animations to the AlertDialog when it opens and closes?</question>
+        <answer>The AlertDialog has default animations. To customize them, you would need to modify or extend the existing animations in the component's CSS by targeting the data-state attributes: `[data-state="open"]` for opening and `[data-state="closed"]` for closing animations.</answer>
+      </qa>
+      <qa>
+        <question>Is it possible to have multiple triggers for the same AlertDialog?</question>
+        <answer>For multiple triggers to the same dialog, use a controlled approach: `const [open, setOpen] = useState(false)`. Then create button components that call `setOpen(true)` when clicked. Apply the `open={open} onOpenChange={setOpen}` props to your AlertDialog component.</answer>
+      </qa>
+      <qa>
+        <question>How can I use AlertDialog for a logout confirmation?</question>
+        <answer>For logout confirmation, set the AlertDialogTitle to "Confirm Logout", add a simple description explaining any consequences, and set AlertDialogAction to trigger your logout function: `<AlertDialogAction onClick={handleLogout}>Logout</AlertDialogAction>`. Use descriptive text to help users understand what will happen.</answer>
+      </qa>
+      <qa>
+        <question>Can I nest another dialog inside an AlertDialog?</question>
+        <answer>While technically possible, nesting dialogs is generally not recommended for usability reasons. If you need to show different content in sequence, consider using a multi-step approach within a single dialog or separate the flows into distinct user interactions.</answer>
+      </qa>
+      <qa>
+        <question>How do I handle backend actions triggered from an AlertDialog?</question>
+        <answer>To handle backend actions, add an onClick handler to your AlertDialogAction component that calls your API: `<AlertDialogAction onClick={async () => { await deleteItem(id); setOpen(false); }}>Delete</AlertDialogAction>`. Consider adding loading states to buttons during async operations.</answer>
+      </qa>
+      <qa>
+        <question>How can I make AlertDialog respond to keyboard shortcuts?</question>
+        <answer>AlertDialog already responds to Escape key to close. For additional shortcuts, add keyboard event listeners to your parent component and programmatically control the dialog. Example: `useEffect(() => { const handleKeyDown = (e) => { if (e.key === 'D' && e.ctrlKey) setOpen(true); }; window.addEventListener('keydown', handleKeyDown); return () => window.removeEventListener('keydown', handleKeyDown); }, []);`</answer>
+      </qa>
+      <qa>
+        <question>Can I use AlertDialog for system notifications?</question>
+        <answer>AlertDialog is designed for critical actions requiring confirmation, not general notifications. For system notifications, consider using the Toast component instead. If you need acknowledgment, a simplified dialog without cancel options might work better.</answer>
+      </qa>
+      <qa>
+        <question>How do I style the AlertDialog to match my application's color scheme?</question>
+        <answer>To match your color scheme, apply classes to the various components. For example: `<AlertDialogContent className="bg-brand-100 border-brand-200">`, `<AlertDialogTitle className="text-brand-900">`, and `<AlertDialogAction className="bg-brand-600 hover:bg-brand-700">`. Use your theme colors consistently across all elements.</answer>
+      </qa>
+      <qa>
+        <question>Is it possible to create an AlertDialog that automatically closes after a timeout?</question>
+        <answer>Yes, use the useEffect hook with a timer in a controlled dialog: `useEffect(() => { if (open) { const timer = setTimeout(() => setOpen(false), 5000); return () => clearTimeout(timer); } }, [open]);`. This will close the dialog after 5 seconds if it's open.</answer>
+      </qa>
+      <qa>
+        <question>How can I implement an undo feature with AlertDialog?</question>
+        <answer>For an undo feature, when the user confirms an action, show a Toast notification with an undo button rather than an AlertDialog. If you must use AlertDialog, store the previous state before the action, then provide a way to restore it if the user cancels within a grace period.</answer>
+      </qa>
+    </qa_section>
+  </component>
+  
+  <component>
+    <name>Alert</name>
+    <code>
+```jsx
+import { Terminal, Waves } from "lucide-react"
+
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/ui/alert"
+
+export default function AlertDemo() {
+  return (
+    <Alert>
+      <Terminal className="h-4 w-4" />
+      <AlertTitle>Heads up!</AlertTitle>
+      <AlertDescription>
+        You can add components to your app using the cli.
+      </AlertDescription>
+    </Alert>
+  )
+}
+```
+    </code>
+    <doc_url>build\gits\shadcn-ui$ui-openv0remix\docs\alert.mdx</doc_url>
+    <design_tokens>
+      - Background-color: Default and variant-specific backgrounds
+      - Border-color: Default and variant-specific borders
+      - Width: Auto/container width
+      - Height: Auto based on content
+      - Text color: Title and description colors
+      - Font family: Inherited from theme
+      - Font size: Different sizes for title and description
+      - Icon size: h-4 w-4 (16px square)
+      - Border radius: Rounded corners
+      - Padding: Internal spacing
+    </design_tokens>
+    <atomic_design_type>Molecule</atomic_design_type>
+    <qa_section>
+      <qa>
+        <question>How do I create a success alert notification?</question>
+        <answer>To create a success alert, use the variant prop with a 'success' value or create a custom variant with green styling: `<Alert variant="success">` or use a custom class: `<Alert className="bg-green-50 border-green-200 text-green-800">`. Include a CheckCircle icon from Lucide and appropriate success message.</answer>
+      </qa>
+      <qa>
+        <question>Can I make an alert that automatically disappears after a few seconds?</question>
+        <answer>The Alert component is static by default. For auto-dismissing alerts, wrap it in a component with useState and useEffect: `const [visible, setVisible] = useState(true); useEffect(() => { if (visible) { const timer = setTimeout(() => setVisible(false), 5000); return () => clearTimeout(timer); } }, [visible]);`. Then conditionally render: `{visible && <Alert>...</Alert>}`</answer>
+      </qa>
+      <qa>
+        <question>How do I add a close button to an Alert component?</question>
+        <answer>The default Alert doesn't include a close button. Add one by appending a button element with appropriate styling and an onClick handler: `<Alert className="relative pr-10"><AlertTitle>...</AlertTitle><button onClick={() => setVisible(false)} className="absolute top-4 right-4 p-1"><X className="h-4 w-4" /></button></Alert>`</answer>
+      </qa>
+      <qa>
+        <question>Can I use Alert for displaying form validation errors?</question>
+        <answer>Yes, Alert is perfect for form validation errors. Use the destructive variant: `<Alert variant="destructive">`. Display the error summary in AlertTitle and details in AlertDescription. For multiple errors, consider mapping through them to create a list within the description.</answer>
+      </qa>
+      <qa>
+        <question>How do I customize the icon in the Alert component?</question>
+        <answer>To customize the icon, simply replace the icon component in your Alert: `<Alert><InfoIcon className="h-5 w-5 text-blue-500" /><AlertTitle>...</AlertTitle></Alert>`. You can use any icon from libraries like Lucide, or your own custom SVG icons.</answer>
+      </qa>
+      <qa>
+        <question>Is it possible to create an Alert with an action button?</question>
+        <answer>Yes, include a button within the Alert component, typically after the AlertDescription: `<Alert><AlertTitle>...</AlertTitle><AlertDescription>...</AlertDescription><div className="mt-3"><Button size="sm" variant="outline">Take Action</Button></div></Alert>`</answer>
+      </qa>
+      <qa>
+        <question>How can I use Alert for a warning notification?</question>
+        <answer>Create a warning Alert using an appropriate variant or custom styles: `<Alert className="bg-yellow-50 border-yellow-200 text-yellow-800">`. Include a warning icon like AlertTriangle from Lucide, and write a clear warning message with any necessary actions.</answer>
+      </qa>
+      <qa>
+        <question>Can I animate the Alert when it appears?</question>
+        <answer>Yes, add animation classes or use a library like Framer Motion. With CSS, add: `<Alert className="animate-fadeIn">` and define the animation: `@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } } .animate-fadeIn { animation: fadeIn 0.3s ease-out; }`</answer>
+      </qa>
+      <qa>
+        <question>How do I create a banner alert that spans the full width of the page?</question>
+        <answer>To create a full-width banner alert, place the Alert in a container without padding and add width classes: `<div className="w-full"><Alert className="w-full rounded-none">...</Alert></div>`. Position it at the top of your layout for a typical banner presentation.</answer>
+      </qa>
+      <qa>
+        <question>Can I use Alert to create a cookie consent banner?</question>
+        <answer>Yes, Alert works well for cookie consent: `<Alert className="fixed bottom-0 left-0 right-0 z-50"><AlertTitle>Cookie Policy</AlertTitle><AlertDescription>This site uses cookies to improve your experience.</AlertDescription><div className="mt-3 flex space-x-2"><Button onClick={acceptCookies}>Accept</Button><Button variant="outline" onClick={declineCookies}>Decline</Button></div></Alert>`</answer>
+      </qa>
+      <qa>
+        <question>How do I display multiple alerts stacked on top of each other?</question>
+        <answer>To stack multiple alerts, place them in a container with spacing: `<div className="space-y-3"><Alert>First alert</Alert><Alert>Second alert</Alert></div>`. For dynamic alerts, map through an array of alert data and apply the spacing to the container.</answer>
+      </qa>
+      <qa>
+        <question>Can I use the Alert component for inline form field validation?</question>
+        <answer>While possible, Alert is typically too prominent for inline field validation. For field-level errors, consider using smaller components like text with an icon, or the FormMessage component if available. Reserve Alert for form-wide validation summaries.</answer>
+      </qa>
+      <qa>
+        <question>How can I make an Alert component with a border on only one side?</question>
+        <answer>Create a one-sided border alert using border utilities: `<Alert className="border-l-4 border-l-blue-500 border-t-0 border-r-0 border-b-0 bg-blue-50">`. This creates a left-bordered alert commonly used for information or notes.</answer>
+      </qa>
+      <qa>
+        <question>Is it possible to nest other complex components inside an Alert?</question>
+        <answer>Yes, Alert can contain any React components. After AlertTitle and AlertDescription, add your complex components: `<Alert><AlertTitle>...</AlertTitle><AlertDescription>...</AlertDescription><div className="mt-4"><DataTable data={data} /></div></Alert>`. Be mindful of spacing and readability.</answer>
+      </qa>
+      <qa>
+        <question>How do I implement a system notification area with multiple types of alerts?</question>
+        <answer>Create a notification area with different alert types by mapping through notification data: `<div className="space-y-2">{notifications.map(notification => (<Alert key={notification.id} variant={notification.type}><AlertTitle>{notification.title}</AlertTitle><AlertDescription>{notification.message}</AlertDescription></Alert>))}</div>`. Style each variant appropriately.</answer>
+      </qa>
+      <qa>
+        <question>Can Alert be used for toast notifications?</question>
+        <answer>While Alert could be used for toasts, it's better to use a dedicated Toast component. If you must use Alert, wrap it in a positioned container: `<div className="fixed top-4 right-4 z-50 max-w-md"><Alert className="shadow-lg">...</Alert></div>` and handle the showing/hiding with state.</answer>
+      </qa>
+      <qa>
+        <question>How do I create an Alert that's collapsible?</question>
+        <answer>For a collapsible Alert, combine it with state management: `const [expanded, setExpanded] = useState(false);` then `<Alert><div className="flex justify-between"><AlertTitle>...</AlertTitle><Button variant="ghost" size="sm" onClick={() => setExpanded(!expanded)}>{expanded ? 'Less' : 'More'}</Button></div>{expanded && <AlertDescription>...</AlertDescription>}</Alert>`</answer>
+      </qa>
+      <qa>
+        <question>How can I use Alert for highlighting new features in my application?</question>
+        <answer>For feature highlights, use a distinctive style: `<Alert className="bg-purple-50 border-purple-200"><Sparkles className="h-4 w-4 text-purple-500" /><AlertTitle>New Feature!</AlertTitle><AlertDescription>Check out our new dashboard analytics.</AlertDescription><Button size="sm" variant="link" className="mt-2 p-0">Take a tour</Button></Alert>`</answer>
+      </qa>
+      <qa>
+        <question>Can I include interactive elements like links in an Alert?</question>
+        <answer>Yes, include interactive elements using standard HTML or UI components: `<Alert><AlertTitle>Update Required</AlertTitle><AlertDescription>Please update your profile. <a href="/profile" className="font-medium underline">Go to profile</a></AlertDescription></Alert>`. Ensure interactive elements have proper focus styles.</answer>
+      </qa>
+      <qa>
+        <question>How do I create an Alert that appears conditionally based on app state?</question>
+        <answer>Use conditional rendering with state: `{isOutOfStock && <Alert variant="destructive"><AlertCircle className="h-4 w-4" /><AlertTitle>Out of Stock</AlertTitle><AlertDescription>This item is currently unavailable.</AlertDescription></Alert>}`. The alert will only appear when the condition is true.</answer>
+      </qa>
+    </qa_section>
+  </component>
+</component_group>
+
+<component_group>
+  <component>
+    <name>Aspect Ratio</name>
+    <code>
+```jsx
+import { AspectRatio } from "@/components/ui/aspect-ratio"
+
+export default function AspectRatioDemo() {
+  return (
+    <div className="w-[450px]">
+      <AspectRatio ratio={16 / 9}>
+        <img 
+          src="https://example.com/image.jpg" 
+          alt="Image" 
+          className="rounded-md object-cover" 
+        />
+      </AspectRatio>
+    </div>
+  )
+}
+```
+    </code>
+    <doc_url>build\gits\shadcn-ui$ui-openv0remix\docs\aspect-ratio.mdx</doc_url>
+    <design_tokens>
+      - Background-color: Transparent
+      - Border-color: N/A
+      - Width: Container width (w-[450px] in example)
+      - Height: Calculated based on aspect ratio
+      - Border-radius: rounded-md (on child image)
+      - Object-fit: object-cover (on child image)
+    </design_tokens>
+    <atomic_design_type>Atom</atomic_design_type>
+    <qa_section>
+      <qa>
+        <question>How do I create a responsive image with a 16:9 aspect ratio?</question>
+        <answer>Use the AspectRatio component wrapped in a responsive container: `<div className="w-full max-w-3xl"><AspectRatio ratio={16/9}><img src="..." alt="..." className="rounded-md object-cover" /></AspectRatio></div>`. The aspect ratio will be maintained as the container width changes.</answer>
+      </qa>
+      <qa>
+        <question>Can I use AspectRatio for video elements?</question>
+        <answer>Yes, AspectRatio works with any content, including videos: `<AspectRatio ratio={16/9}><video src="..." controls className="rounded-md object-cover" /></AspectRatio>`. This maintains the video's aspect ratio while allowing it to resize with its container.</answer>
+      </qa>
+      <qa>
+        <question>How do I create a square container using AspectRatio?</question>
+        <answer>For a perfect square, set the ratio to 1: `<AspectRatio ratio={1}>...</Aspect

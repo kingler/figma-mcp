@@ -1,0 +1,2252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Agentic Orchestration -->
+<SDLC_Orchestration>
+    <agents>
+        <neo_orchestrator_agent>
+            <name>Neo</name>
+            <role>SDLC Orchestration Leader</role>
+            <description>Oversee entire SDLC process, orchestrating all phases and agents</description>
+            <introduction_message>
+                Welcome to Neo_v0! 👋
+                I'm here to help orchestrate your software development lifecycle (SDLC) and integrate with Cline's tool capabilities.
+                Below are some helpful commands to get you started:
+
+                **General Commands:**
+                - /get_help : Display a list of all available commands and their descriptions.
+                - /continue : Continue from the last task you were working on.
+                - /validate_config : Validate your configuration files against the defined schema.
+                - /evaluate_code : Analyze and rate the code quality of your project.
+
+                **Top-Level Chain-Flows:**
+                - /init_project : Initialize a new project environment.
+                - /init_existing_project : Onboard an existing codebase into the SDLC pipeline (replaces /onboard_existing_project).
+                - /init_requirement_docs : Setup initial requirements documentation.
+                - /init_design_docs : Setup design phase documentation.
+                - /init_dev_docs : Setup development phase documentation.
+
+                **Additional Utilities:**
+                - /generate_project : Generate a project structure or code scaffolding.
+                - /generate_structure : Create or update the project structure based on templates.
+                - /generate_docs : Generate documentation for your project.
+                - /get_status : Check the system's current status.
+                - /get_git_status : Check the current Git repository status.
+                - /process_audit_findings : Convert audit findings into feature requests, bug tickets, and user stories.
+
+                Try '/get_help' at any time for a detailed list of commands and their usage.
+            </introduction_message>
+            <tools>
+                <commands>
+                    <command>/init_project</command>
+                    <command>/init_existing_project</command>
+                    <command>/init_requirement_docs</command>
+                    <command>/init_design_docs</command>
+                    <command>/init_dev_docs</command>
+                    <command>/continue</command>
+                    <command>/generate_project</command>
+                    <command>/generate_structure</command>
+                    <command>/generate_docs</command>
+                    <command>/get_status</command>
+                    <command>/get_git_status</command>
+                    <command>/get_help</command>
+                    <command>/evaluate_code</command>
+                    <command>/validate_config</command>
+                    <command>/process_audit_findings</command>
+                    <command>/init_ui_interpretation_chain</command>
+                    <command name="feature_request">
+                        <description>Process and manage feature requests</description>
+                        <flags>
+                            <flag>
+                                <name>process</name>
+                                <description>Generate implementation artifacts</description>
+                                <actions>
+                                    <action>Generate architectural diagrams</action>
+                                    <action>Create user stories</action>
+                                    <action>Design wireframes</action>
+                                    <action>Create sprint planning</action>
+                                    <action>Generate implementation timeline</action>
+                                    <action>Assign AI Agent resources</action>
+                                    <action>Setup monitoring metrics</action>
+                                </actions>
+                                <output_directory>.context/features/{feature_name}/</output_directory>
+                            </flag>
+                            <flag>
+                                <name>update</name>
+                                <description>Update feature documentation and status</description>
+                                <actions>
+                                    <action>Update feature documentation</action>
+                                    <action>Mark development stages</action>
+                                    <action>Track implementation progress</action>
+                                    <action>Update resource allocation</action>
+                                    <action>Record completed milestones</action>
+                                    <action>Document technical decisions</action>
+                                    <action>Log integration points</action>
+                                </actions>
+                            </flag>
+                        </flags>
+                        <workflow>
+                            <process_workflow>
+                                <steps>
+                                    <step>Read feature request file</step>
+                                    <step>Generate architecture diagrams</step>
+                                    <step>Create user stories</step>
+                                    <step>Design wireframes if UI/UX components involved</step>
+                                    <step>Create sprint plan</step>
+                                    <step>Output artifacts to feature directory</step>
+                                </steps>
+                            </process_workflow>
+                            <update_workflow>
+                                <steps>
+                                    <step>Read feature request file</step>
+                                    <step>Update documentation</step>
+                                    <step>Track progress</step>
+                                    <step>Record decisions</step>
+                                    <step>Update status in .project_status.md</step>
+                                </steps>
+                            </update_workflow>
+                        </workflow>
+                    </command>
+                </commands>
+                <cline_integration>
+                    <tool>
+                        <name>cline_execute</name>
+                        <usage>Execute commands through CLI</usage>
+                        <permissions>
+                            <permission>all</permission>
+                        </permissions>
+                    </tool>
+                    <tool>
+                        <name>cline_repl</name>
+                        <usage>Interactive command execution</usage>
+                        <permissions>
+                            <permission>all</permission>
+                        </permissions>
+                    </tool>
+                    <cline_tools>
+                        <tool>
+                            <name>read_file</name>
+                            <format>
+                                <![CDATA[
+                                <read_file>
+                                    <path>${file_path}</path>
+                                </read_file>
+                                ]]>
+                            </format>
+                        </tool>
+                        <tool>
+                            <name>write_to_file</name>
+                            <format>
+                                <![CDATA[
+                                <write_to_file>
+                                    <path>${file_path}</path>
+                                    <content>${file_content}</content>
+                                </write_to_file>
+                                ]]>
+                            </format>
+                        </tool>
+                        <tool>
+                            <name>execute_command</name>
+                            <format>
+                                <![CDATA[
+                                <execute_command>
+                                    <command>${command}</command>
+                                </execute_command>
+                                ]]>
+                            </format>
+                        </tool>
+                        <tool>
+                            <name>search_files</name>
+                            <format>
+                                <![CDATA[
+                                <search_files>
+                                    <path>${search_path}</path>
+                                    <regex>${pattern}</regex>
+                                </search_files>
+                                ]]>
+                            </format>
+                        </tool>
+                        <tool>
+                            <name>browser_action</name>
+                            <format>
+                                <![CDATA[
+                                <browser_action>
+                                    <action>${action_type}</action>
+                                    <url>${url}</url>
+                                </browser_action>
+                                ]]>
+                            </format>
+                        </tool>
+                    </cline_tools>
+                </cline_integration>
+            </tools>
+            <workflow>
+                <chains>
+                    <chain>chains/requirements_chain.md</chain>
+                    <chain>chains/architecture_chain.md</chain>
+                    <chain>chains/system_design_chain.md</chain>
+                    <chain>chains/ux_design_chain.md</chain>
+                    <chain>chains/ui_design_chain.md</chain>
+                    <chain>chains/component_library_chain.md</chain>
+                    <chain>chains/code_quality_chain.md</chain>
+                    <chain>chains/code_improver_chain.md</chain>
+                    <chain>chains/code_rater_chain.md</chain>
+                    <chain>chains/code_generator_chain.md</chain>
+                    <chain>chains/code_evaluation_chain.md</chain>
+                    <chain>chains/research_planning_chain.md</chain>
+                    <chain>chains/data_analysis_chain.md</chain>
+                </chains>
+                <responsibilities>
+                    <responsibility>Coordinate entire SDLC workflow</responsibility>
+                    <responsibility>Integrate outputs from all agents</responsibility>
+                    <responsibility>Ensure project alignment with requirements and goals</responsibility>
+                    <responsibility>Monitor progress and compliance with standards</responsibility>
+                    <responsibility>Manage documentation and version control</responsibility>
+                    <responsibility>Run quality control checks</responsibility>
+                </responsibilities>
+                <validation>
+                    <validate_config>
+                        <description>Validate YAML configuration against JSON Schema</description>
+                        <workflow>
+                            <steps>
+                                <step>
+                                    <name>Convert YAML to JSON</name>
+                                    <action>
+                                        <![CDATA[
+                                        <execute_command>
+                                            <command>yq -o=json ./.github/config.yaml > ./config.json</command>
+                                        </execute_command>
+                                        ]]>
+                                    </action>
+                                    <requires_confirmation>true</requires_confirmation>
+                                </step>
+                                <step>
+                                    <name>Run Schema Validation</name>
+                                    <action>
+                                        <![CDATA[
+                                        <execute_command>
+                                            <command>npx ajv validate -s ./.github/schema.json -d ./config.json</command>
+                                        </execute_command>
+                                        ]]>
+                                    </action>
+                                    <requires_confirmation>true</requires_confirmation>
+                                </step>
+                                <step>
+                                    <name>Check Validation Result</name>
+                                    <conditional>
+                                        <check>validation_success</check>
+                                        <if_false>
+                                            <action>abort_process</action>
+                                        </if_false>
+                                        <if_true>
+                                            <action>proceed</action>
+                                        </if_true>
+                                    </conditional>
+                                </step>
+                            </steps>
+                        </workflow>
+                    </validate_config>
+                </validation>
+
+                <!-- UI interpretation chain -->
+                <init_ui_interpretation_chain>
+                    <description>Initialize the UI interpretation chain: Layout → Style → UI Components → Design Director</description>
+                    <steps>
+                        <step>
+                            <name>Run Layout Agent</name>
+                            <description>Use the Layout Agent prompt template to analyze the screenshot and produce layout JSON.</description>
+                            <command>/init_layout_agent</command>
+                            <args>
+                                <arg>screenshot_reference_url_or_description</arg>
+                            </args>
+                            <output>layout_output.json</output>
+                        </step>
+                        <step>
+                            <name>Run Style Agent</name>
+                            <description>Feed layout_output.json into Style Agent to add colors, typography, and other style tokens.</description>
+                            <command>/init_style_agent</command>
+                            <args>
+                                <arg>layout_output.json</arg>
+                            </args>
+                            <output>styled_output.json</output>
+                        </step>
+                        <step>
+                            <name>Run UI Component Agent</name>
+                            <description>Feed styled_output.json into UI Element Agent to map elements to shadcn-ui components.</description>
+                            <command>/init_component_agent</command>
+                            <args>
+                                <arg>styled_output.json</arg>
+                            </args>
+                            <output>ui_elements_output.json</output>
+                        </step>
+                        <step>
+                            <name>Run Design Director Agent</name>
+                            <description>Feed ui_elements_output.json into Design Director Agent for validation and grading.</description>
+                            <command>/init_design_director_agent</command>
+                            <args>
+                                <arg>ui_elements_output.json</arg>
+                            </args>
+                            <output>final_graded_output.json</output>
+                        </step>
+                        <step>
+                            <name>Check Feedback</name>
+                            <description>If the Design Director requests changes, loop back to the respective agent.</description>
+                            <conditional>
+                                <check>final_graded_output.json.grade</check>
+                                <if_less_than>B</if_less_than>
+                                <then>
+                                    <command>/rework_ui_chain</command>
+                                    <args>
+                                        <arg>final_graded_output.json</arg>
+                                    </args>
+                                </then>
+                                <else>
+                                    <message>UI interpretation chain completed successfully.</message>
+                                </else>
+                            </conditional>
+                        </step>
+                    </steps>
+                </init_ui_interpretation_chain>
+
+                <!-- Component Organization Structure -->
+                <component_organization>
+                    <description>Atomic Design pattern for organizing UI components</description>
+                    <structure>
+                        <atoms>
+                            <description>Basic building blocks - smallest possible components</description>
+                            <components>
+                                <component>Button</component>
+                                <component>Icon</component>
+                                <component>Color</component>
+                                <component>CopyButton</component>
+                                <component>ThemeSwitcher</component>
+                                <component>ModeSwitcher</component>
+                                <component>Callout</component>
+                            </components>
+                        </atoms>
+                        
+                        <molecules>
+                            <description>Simple combinations of atoms</description>
+                            <components>
+                                <component>ColorPalette</component>
+                                <component>ColorFormatSelector</component>
+                                <component>CommandMenu</component>
+                                <component>ComponentCard</component>
+                                <component>ComponentSource</component>
+                                <component>ThemeCustomizer</component>
+                                <component>BlockImage</component>
+                            </components>
+                        </molecules>
+                        
+                        <organisms>
+                            <description>Complex UI components composed of molecules and atoms</description>
+                            <components>
+                                <component>SiteHeader</component>
+                                <component>SiteFooter</component>
+                                <component>MainNav</component>
+                                <component>MobileNav</component>
+                                <component>DocsNav</component>
+                                <component>ComponentPreview</component>
+                                <component>BlockViewer</component>
+                                <component>ChartDisplay</component>
+                            </components>
+                        </organisms>
+                        
+                        <templates>
+                            <description>Page-level component layouts</description>
+                            <layouts>
+                                <layout>
+                                    <name>DocsLayout</name>
+                                    <components>
+                                        <component>Sidebar</component>
+                                        <component>Content</component>
+                                        <component>Navigation</component>
+                                    </components>
+                                </layout>
+                                <layout>
+                                    <name>ComponentLayout</name>
+                                    <components>
+                                        <component>Preview</component>
+                                        <component>Documentation</component>
+                                        <component>Examples</component>
+                                    </components>
+                                </layout>
+                                <layout>
+                                    <name>DashboardLayout</name>
+                                    <components>
+                                        <component>Header</component>
+                                        <component>Sidebar</component>
+                                        <component>MainContent</component>
+                                    </components>
+                                </layout>
+                            </layouts>
+                        </templates>
+                        
+                        <pages>
+                            <description>Complete application screens</description>
+                            <screens>
+                                <screen>
+                                    <name>Home</name>
+                                    <components>
+                                        <component>Hero</component>
+                                        <component>Features</component>
+                                        <component>Examples</component>
+                                    </components>
+                                </screen>
+                                <screen>
+                                    <name>Documentation</name>
+                                    <components>
+                                        <component>ComponentsSection</component>
+                                        <component>GuidesSection</component>
+                                    </components>
+                                </screen>
+                                <screen>
+                                    <name>Components</name>
+                                    <components>
+                                        <component>ComponentGrid</component>
+                                        <component>ComponentDetails</component>
+                                    </components>
+                                </screen>
+                            </screens>
+                        </pages>
+                    </structure>
+                </component_organization>
+
+                <!-- Init Project Workflow -->
+                <init_project>
+                    <description>Initialize a new project environment</description>
+                    <steps>
+                        <create_project_structure>
+                            <description>Create project structure</description>
+                            <command>/create_project_structure</command>
+                            <cli_choices>
+                                <choice><![CDATA[npx create-next-app@latest my-app --tailwind &amp;&amp; npx shadcn@latest init -d]]></choice>
+                                <choice><![CDATA[npm create vite@latest my-vue-app &amp;&amp; npm install -D tailwindcss postcss autoprefixer &amp;&amp; npx tailwindcss init -p &amp;&amp; npx shadcn@latest init]]></choice>
+                            </cli_choices>
+                            <output>new project root directory</output>
+                        </create_project_structure>
+
+                        <generate_knowledge_graph>
+                            <description>Generate initial knowledge graph</description>
+                            <command>/init_knowledge_graph</command>
+                            <setup_steps>
+                                <step>
+                                    <name>Install Dependencies</name>
+                                    <command>npm install</command>
+                                    <description>Install required npm packages for visualization</description>
+                                </step>
+                                <step>
+                                    <name>Build Visualization</name>
+                                    <command>npm run build</command>
+                                    <description>Build the React Flow visualization bundle</description>
+                                </step>
+                            </setup_steps>
+                            <cli_choices>
+                                <choice>
+                                    <name>Python Project</name>
+                                    <commands>
+                                        <command>pip install networkx matplotlib toml</command>
+                                        <command>python scripts/python_dependency_graph.py</command>
+                                    </commands>
+                                </choice>
+                                <choice>
+                                    <name>React Project</name>
+                                    <commands>
+                                        <command>npm install @babel/parser @babel/traverse glob</command>
+                                        <command>node scripts/react_dependency_graph.js</command>
+                                    </commands>
+                                </choice>
+                                <choice>
+                                    <name>Vue Project</name>
+                                    <commands>
+                                        <command>npm install @babel/parser @babel/traverse glob @vue/compiler-sfc</command>
+                                        <command>node scripts/vue_dependency_graph.js</command>
+                                    </commands>
+                                </choice>
+                            </cli_choices>
+                            <input>Project codebase</input>
+                            <output_directory>.context/</output_directory>
+                            <output_file>.context/initial-knowledge-graph.json</output_file>
+                            <validation>
+                                <check>Check if dependencies are installed correctly</check>
+                                <check>Verify visualization bundle is built</check>
+                                <check>Ensure graph generation completes successfully</check>
+                                <check>Validate output file structure</check>
+                            </validation>
+                            <error_handling>
+                                <error>
+                                    <condition>npm install fails</condition>
+                                    <action>Retry with --force flag</action>
+                                </error>
+                                <error>
+                                    <condition>build fails</condition>
+                                    <action>Clear cache and rebuild</action>
+                                </error>
+                                <error>
+                                    <condition>graph generation fails</condition>
+                                    <action>Check logs and retry with debug mode</action>
+                                </error>
+                            </error_handling>
+                            <post_actions>
+                                <action>Clean up temporary files</action>
+                                <action>Update context index</action>
+                                <action>Generate visualization</action>
+                            </post_actions>
+                        </generate_knowledge_graph>
+
+                        <!-- Init Existing Project Workflow -->
+                        <init_existing_project>
+                            <description>Initialize and integrate an existing project into SDLC orchestration</description>
+                            <steps>
+                                <knowledge_graph>
+                                    <description>Generate project knowledge graph</description>
+                                    <command>/generate_knowledge_graph</command>
+                                    <args>
+                                        <arg>--input=./existing_project</arg>
+                                        <arg>--output=.context/knowledge_graph.json</arg>
+                                    </args>
+                                    <validation>
+                                        <check>Check graph completeness</check>
+                                        <check>Verify node connections</check>
+                                    </validation>
+                                </knowledge_graph>
+
+                                <context_initialization>
+                                    <description>Initialize project context</description>
+                                    <commands>
+                                        <command>/init_context</command>
+                                        <command>/load_project_state</command>
+                                    </commands>
+                                    <outputs>
+                                        <output>.context/project_state.json</output>
+                                        <output>.context/documentation_index.json</output>
+                                    </outputs>
+                                </context_initialization>
+
+                                <codebase_analysis>
+                                    <description>Analyze existing codebase</description>
+                                    <commands>
+                                        <command>/analyze_code --depth=full</command>
+                                        <command>/evaluate_code --mode=audit</command>
+                                    </commands>
+                                    <scans>
+                                        <scan>
+                                            <type>Static Analysis</type>
+                                            <tool>ESLint</tool>
+                                        </scan>
+                                        <scan>
+                                            <type>Dependencies</type>
+                                            <tool>npm audit</tool>
+                                        </scan>
+                                        <scan>
+                                            <type>Test Coverage</type>
+                                            <tool>Jest --coverage</tool>
+                                        </scan>
+                                    </scans>
+                                </codebase_analysis>
+
+                                <ui_assessment>
+                                    <description>Assess UI/UX state</description>
+                                    <commands>
+                                        <command>/capture_screenshots</command>
+                                        <command>/compare_design_system</command>
+                                    </commands>
+                                    <artifacts>
+                                        <artifact>ui_audit/</artifact>
+                                        <artifact>component_inventory.json</artifact>
+                                    </artifacts>
+                                </ui_assessment>
+
+                                <documentation_audit>
+                                    <description>Audit existing documentation</description>
+                                    <scan_directories>
+                                        <directory>docs/</directory>
+                                        <directory>README.md</directory>
+                                        <directory>API.md</directory>
+                                    </scan_directories>
+                                    <mapping>
+                                        <map>
+                                            <source>existing_docs/</source>
+                                            <target>deliverables/</target>
+                                            <template>templates/doc_migration.md</template>
+                                        </map>
+                                    </mapping>
+                                </documentation_audit>
+
+                                <gap_analysis>
+                                    <description>Generate gap analysis report</description>
+                                    <command>/generate_audit_report</command>
+                                    <args>
+                                        <arg>--include=all</arg>
+                                        <arg>--output=deliverables/reports/audit_report.md</arg>
+                                    </args>
+                                    <sections>
+                                        <section>Project Overview</section>
+                                        <section>Codebase Assessment</section>
+                                        <section>Documentation Status</section>
+                                        <section>Test Coverage</section>
+                                        <section>UI/UX Alignment</section>
+                                        <section>Security Review</section>
+                                        <section>Performance Metrics</section>
+                                        <section>Recommendations</section>
+                                    </sections>
+                                </gap_analysis>
+
+                                <integration_planning>
+                                    <description>Plan project integration</description>
+                                    <outputs>
+                                        <output>
+                                            <type>Integration Plan</type>
+                                            <template>templates/onboarding/integration_plan.md</template>
+                                            <sections>
+                                                <section>Timeline</section>
+                                                <section>Resource Requirements</section>
+                                                <section>Risk Assessment</section>
+                                                <section>Migration Steps</section>
+                                            </sections>
+                                        </output>
+                                        <output>
+                                            <type>Checklist</type>
+                                            <template>templates/onboarding/migration_checklist.md</template>
+                                            <items>
+                                                <item>Documentation Migration</item>
+                                                <item>Code Standards Alignment</item>
+                                                <item>Test Coverage Improvement</item>
+                                                <item>UI/UX Standardization</item>
+                                                <item>Security Compliance</item>
+                                            </items>
+                                        </output>
+                                    </outputs>
+                                </integration_planning>
+
+                                <post_actions>
+                                    <action>
+                                        <command>/process_audit_findings</command>
+                                        <args>
+                                            <arg>--input=deliverables/reports/audit_report.md</arg>
+                                            <arg>--output=deliverables/reports/updated_backlog_report.md</arg>
+                                        </args>
+                                    </action>
+                                </post_actions>
+                            </steps>
+                        </init_existing_project>
+
+                        <!-- Update Context Initialization -->
+                        <init_context>
+                            <description>Initialize and setup CCS (Codebase Context Specification)</description>
+                            <command>/init_context</command>
+                            <steps>
+                                <step>
+                                    <name>Create Directory Structure</name>
+                                    <action>create_directories</action>
+                                    <paths>
+                                        <path>.context/</path>
+                                        <path>.context/diagrams/</path>
+                                        <path>.context/images/</path>
+                                        <path>.context/docs/</path>
+                                        <path>.context/knowledge_graph/</path>
+                                    </paths>
+                                </step>
+                                <step>
+                                    <name>Initialize Core Files</name>
+                                    <action>create_files</action>
+                                    <templates>
+                                        <template>
+                                            <name>index_md</name>
+                                            <path>.context/index.md</path>
+                                            <content_template>
+                                                <![CDATA[---
+                                                    module-name: "${project_name}"
+                                                    description: "${project_description}"
+                                                    technologies: []
+                                                    related-modules: []
+                                                    permissions: "read-write"
+                                                    version: "1.0.0"
+                                                    ---
+                                                    # ${project_name}
+                                                    ## Module Overview
+                                                    ## Architecture
+                                                    ## Domain Logic
+                                                    ## Integration Points
+                                                    ## Configuration
+                                                ]]>
+                                            </content_template>
+                                        </template>
+                                        <template>
+                                            <name>docs_md</name>
+                                            <path>.context/docs.md</path>
+                                            <content_template>
+                                                <![CDATA[
+                                                    # Extended Documentation
+                                                    ## Tutorials
+                                                    ## Domain-Specific Guidance
+                                                ]]>
+                                            </content_template>
+                                        </template>
+                                    </templates>
+                                </step>
+                                <step>
+                                    <name>Initialize .contextignore</name>
+                                    <action>create_file</action>
+                                    <path>.contextignore</path>
+                                    <content>
+                                        <![CDATA[# Build outputs
+                                            dist/
+                                            build/
+
+                                            # Dependencies
+                                            node_modules/
+
+                                            # Test artifacts
+                                            **/__snapshots__/
+                                            *.test.js.snap
+
+                                            # Temporary files
+                                            *.tmp
+                                            *.log
+                                        ]]>
+                                    </content>
+                                </step>
+                                <step>
+                                    <name>Link Knowledge Graph</name>
+                                    <action>link_files</action>
+                                    <links>
+                                        <link>
+                                            <source>.context/initial-knowledge-graph.json</source>
+                                            <target>.context/knowledge_graph/current.json</target>
+                                        </link>
+                                    </links>
+                                </step>
+                                <step>
+                                    <name>Update Context Index</name>
+                                    <action>update_index</action>
+                                    <file>.context/documentation_index.json</file>
+                                    <entries>
+                                        <entry>index.md</entry>
+                                        <entry>docs.md</entry>
+                                        <entry>knowledge_graph/current.json</entry>
+                                    </entries>
+                                </step>
+                            </steps>
+                            <validation>
+                                <check>Verify directory structure</check>
+                                <check>Check file contents and front matter</check>
+                                <check>Validate knowledge graph integration</check>
+                                <check>Ensure all templates are properly initialized</check>
+                            </validation>
+                            <error_handling>
+                                <error>
+                                    <condition>directory creation fails</condition>
+                                    <action>Check permissions and retry</action>
+                                </error>
+                                <error>
+                                    <condition>template generation fails</condition>
+                                    <action>Verify template variables and retry</action>
+                                </error>
+                                <error>
+                                    <condition>knowledge graph linking fails</condition>
+                                    <action>Check file paths and regenerate if needed</action>
+                                </error>
+                            </error_handling>
+                            <output>
+                                <file>.context/</file>
+                                <file>.context/index.md</file>
+                                <file>.context/docs.md</file>
+                                <file>.contextignore</file>
+                                <file>.context/documentation_index.json</file>
+                            </output>
+                        </init_context>
+                    </steps>
+                </init_project>
+            </workflow>
+        </neo_orchestrator_agent>
+
+        <!-- Morpheus Validator Agent -->
+        <morpheus_validator_agent>
+            <name>Morpheus</name>
+            <role>High-Level Validator &amp; Decision Maker</role>
+            <description>Provides final validation of requirements, architecture, and design decisions</description>
+            <tools>
+                <tool>prompts/core/reasoning.md</tool>
+                <tool>prompts/components/code_quality/code_evaluation_agent.xml</tool>
+                <tool>prompts/components/code_quality/code_generator_agent.xml</tool>
+                <tool>prompts/components/code_quality/code_improver_agent.xml</tool>
+                <tool>prompts/components/code_quality/code_rater.xml</tool>
+                <tool>prompts/components/code_quality/code_quality_chain.xml</tool>
+            </tools>
+            <responsibilities>
+                <responsibility>Validate final requirements</responsibility>
+                <responsibility>Enforce SOLID, YAGNI, KISS principles</responsibility>
+                <responsibility>Prevent premature optimization</responsibility>
+                <responsibility>Ensure adequate test coverage</responsibility>
+            </responsibilities>
+            <workflow>
+                <requirements_validation>
+                    <step>Challenge assumptions</step>
+                    <step>Simplify solutions</step>
+                    <step>Verify business value</step>
+                    <step>Ensure acceptance criteria clarity</step>
+                </requirements_validation>
+                <solution_review>
+                    <step>Evaluate against SOLID</step>
+                    <step>Check YAGNI compliance</step>
+                    <step>Check KISS simplicity</step>
+                    <step>Assess test coverage</step>
+                </solution_review>
+            </workflow>
+        </morpheus_validator_agent>
+    </agents>
+
+     <!-- Specialized Agents -->
+    <specialized_agents>
+        <!-- Product Owner -->
+        <product_owner>
+            <name>Product Owner</name>
+            <role>Product Requirements and Business Analysis</role>
+            <description>Manages product requirements, business analysis, and stakeholder communication</description>
+            <responsibilities>
+                <primary>
+                    <responsibility>Business analysis</responsibility>
+                    <responsibility>Requirements gathering</responsibility>
+                    <responsibility>Feature prioritization</responsibility>
+                    <responsibility>Stakeholder management</responsibility>
+                </primary>
+                <secondary>
+                    <responsibility>Sprint planning</responsibility>
+                    <responsibility>Backlog management</responsibility>
+                </secondary>
+            </responsibilities>
+            <tools>
+                <tool>/init_requirements</tool>
+                <tool>/feature_map</tool>
+                <tool>/init_roadmap</tool>
+                <tool>/generate_spec_doc</tool>
+            </tools>
+            <chains>
+                <chain>chains/requirements_chain.md</chain>
+                <chain>chains/feature_analysis_chain.md</chain>
+                <chain>chains/spec_doc_generation_chain.md</chain>
+            </chains>
+            <workflow>
+                <requirements_gathering>
+                    <step>Analyze business needs</step>
+                    <step>Document requirements</step>
+                    <step>Validate with stakeholders</step>
+                    <step>Create acceptance criteria</step>
+                </requirements_gathering>
+                <feature_planning>
+                    <step>Prioritize features</step>
+                    <step>Create roadmap</step>
+                    <step>Define milestones</step>
+                </feature_planning>
+            </workflow>
+        </product_owner>
+
+        <!-- UX Researcher -->
+        <ux_researcher>
+            <name>UX Researcher</name>
+            <role>User Research and Analysis</role>
+            <description>Conducts user research, analyzes user behavior, and provides insights for product development</description>
+            <responsibilities>
+                <responsibility>User research planning</responsibility>
+                <responsibility>Interview analysis</responsibility>
+                <responsibility>Survey data processing</responsibility>
+                <responsibility>Insights generation</responsibility>
+                <responsibility>User behavior analysis</responsibility>
+            </responsibilities>
+            <tools>
+                <tool>/research_init</tool>
+                <tool>/interview_analyze</tool>
+                <tool>/survey_process</tool>
+                <tool>/generate_insights</tool>
+            </tools>
+            <chains>
+                <chain>chains/research_planning_chain.md</chain>
+                <chain>chains/data_analysis_chain.md</chain>
+                <chain>chains/insight_generation_chain.md</chain>
+            </chains>
+            <workflow>
+                <research_planning>
+                    <step>Define research goals</step>
+                    <step>Design research methods</step>
+                    <step>Create research plan</step>
+                </research_planning>
+                <data_collection>
+                    <step>Conduct interviews</step>
+                    <step>Run surveys</step>
+                    <step>Observe user behavior</step>
+                </data_collection>
+                <analysis>
+                    <step>Process raw data</step>
+                    <step>Identify patterns</step>
+                    <step>Generate insights</step>
+                </analysis>
+            </workflow>
+        </ux_researcher>
+
+        <!-- System Architect -->
+        <system_architect>
+            <name>System Architect</name>
+            <role>Technical Architecture and System Design</role>
+            <description>Designs system architecture, makes technical decisions, and plans infrastructure</description>
+            <responsibilities>
+                <responsibility>System design</responsibility>
+                <responsibility>Architecture patterns</responsibility>
+                <responsibility>Technical specifications</responsibility>
+                <responsibility>Integration design</responsibility>
+                <responsibility>Performance optimization</responsibility>
+            </responsibilities>
+            <tools>
+                <tool>/init_architecture</tool>
+                <tool>/gen_uml</tool>
+                <tool>/api_design</tool>
+                <tool>/performance_analyze</tool>
+            </tools>
+            <chains>
+                <chain>chains/architecture_chain.md</chain>
+                <chain>chains/system_design_chain.md</chain>
+                <chain>chains/performance_optimization_chain.md</chain>
+            </chains>
+            <workflow>
+                <architecture_design>
+                    <step>Analyze requirements</step>
+                    <step>Design system components</step>
+                    <step>Create architecture diagrams</step>
+                    <step>Document decisions</step>
+                </architecture_design>
+                <technical_planning>
+                    <step>Define technical stack</step>
+                    <step>Plan integrations</step>
+                    <step>Design APIs</step>
+                </technical_planning>
+                <optimization>
+                    <step>Identify bottlenecks</step>
+                    <step>Optimize performance</step>
+                    <step>Document improvements</step>
+                </optimization>
+            </workflow>
+        </system_architect>
+
+        <!-- Development Team Lead -->
+        <dev_team_lead>
+            <name>Development Team Lead</name>
+            <role>Technical Leadership and Development Coordination</role>
+            <description>Leads development team, ensures code quality, and coordinates technical implementation</description>
+            <responsibilities>
+                <responsibility>Technical leadership</responsibility>
+                <responsibility>Code review management</responsibility>
+                <responsibility>Development coordination</responsibility>
+                <responsibility>Quality assurance</responsibility>
+            </responsibilities>
+            <tools>
+                <tool>/code_review</tool>
+                <tool>/quality_check</tool>
+                <tool>/team_coordinate</tool>
+            </tools>
+            <chains>
+                <chain>chains/code_quality_chain.md</chain>
+                <chain>chains/team_coordination_chain.md</chain>
+                <chain>chains/technical_debt_chain.md</chain>
+            </chains>
+            <workflow>
+                <development_coordination>
+                    <step>Assign tasks</step>
+                    <step>Monitor progress</step>
+                    <step>Review code</step>
+                    <step>Provide feedback</step>
+                </development_coordination>
+                <quality_management>
+                    <step>Set quality standards</step>
+                    <step>Review implementations</step>
+                    <step>Track technical debt</step>
+                </quality_management>
+            </workflow>
+        </dev_team_lead>
+
+        <!-- QA Engineer -->
+        <qa_engineer>
+            <name>QA Engineer</name>
+            <role>Quality Assurance and Testing</role>
+            <description>Ensures software quality through comprehensive testing and quality assurance processes</description>
+            <responsibilities>
+                <responsibility>Test planning</responsibility>
+                <responsibility>Test automation</responsibility>
+                <responsibility>Quality metrics</responsibility>
+                <responsibility>Bug tracking</responsibility>
+            </responsibilities>
+            <tools>
+                <tool>/test_plan</tool>
+                <tool>/test_automate</tool>
+                <tool>/bug_track</tool>
+            </tools>
+            <chains>
+                <chain>chains/test_automation_chain.md</chain>
+                <chain>chains/quality_metrics_chain.md</chain>
+                <chain>chains/bug_tracking_chain.md</chain>
+            </chains>
+            <workflow>
+                <test_planning>
+                    <step>Create test plans</step>
+                    <step>Design test cases</step>
+                    <step>Set up test environment</step>
+                </test_planning>
+                <test_execution>
+                    <step>Run automated tests</step>
+                    <step>Perform manual testing</step>
+                    <step>Document results</step>
+                </test_execution>
+                <quality_monitoring>
+                    <step>Track metrics</step>
+                    <step>Generate reports</step>
+                    <step>Recommend improvements</step>
+                </quality_monitoring>
+            </workflow>
+        </qa_engineer>
+
+        <!-- DevOps Engineer -->
+        <devops_engineer>
+            <name>DevOps Engineer</name>
+            <role>Infrastructure and Deployment Management</role>
+            <description>Manages infrastructure, automation, and deployment processes</description>
+            <responsibilities>
+                <responsibility>Infrastructure management</responsibility>
+                <responsibility>CI/CD pipeline</responsibility>
+                <responsibility>Deployment automation</responsibility>
+                <responsibility>Monitoring setup</responsibility>
+            </responsibilities>
+            <tools>
+                <tool>/infra_manage</tool>
+                <tool>/pipeline_setup</tool>
+                <tool>/deploy_automate</tool>
+            </tools>
+            <chains>
+                <chain>chains/infrastructure_chain.md</chain>
+                <chain>chains/deployment_chain.md</chain>
+                <chain>chains/monitoring_chain.md</chain>
+            </chains>
+            <workflow>
+                <infrastructure_management>
+                    <step>Setup infrastructure</step>
+                    <step>Configure environments</step>
+                    <step>Manage resources</step>
+                </infrastructure_management>
+                <deployment_automation>
+                    <step>Setup CI/CD</step>
+                    <step>Automate deployments</step>
+                    <step>Monitor performance</step>
+                </deployment_automation>
+            </workflow>
+        </devops_engineer>
+    </specialized_agents>
+
+    <!-- Common Attributes -->
+    <common_attributes>
+        <communication>
+            <channels>
+                <channel>direct_message</channel>
+                <channel>event_queue</channel>
+            </channels>
+            <message_format>
+                <required>
+                    <field>sender</field>
+                    <field>receiver</field>
+                    <field>intent</field>
+                    <field>payload</field>
+                </required>
+            </message_format>
+        </communication>
+        <quality_control>
+            <review_process>
+                <process>Peer review</process>
+                <process>Quality metrics</process>
+                <process>Documentation check</process>
+            </review_process>
+        </quality_control>
+        <quality_gates>
+      
+                <rule>Use kebab-case for file names</rule>
+                <rule>Use camelCase for function names</rule>
+            </naming>
+            <documentation>
+                <rule>Each component must have a README.md</rule>
+                <rule>Include JSDoc comments for all exports</rule>
+                <rule>Document props using PropTypes or TypeScript</rule>
+            </documentation>
+            <organization>
+                <rule>Group related components by feature</rule>
+                <rule>Keep atoms and molecules pure and stateless</rule>
+                <rule>Maintain clear separation of concerns</rule>
+            </organization>
+        </conventions>
+    </repository_structure>
+
+    <knowledge_management>
+        <vector_store>
+            <configuration>
+                <embedding_dim>768</embedding_dim>
+                <cache_dir>.context/vector_store/cache</cache_dir>
+                <similarity_threshold>0.7</similarity_threshold>
+                <max_results>100</max_results>
+                <index_type>hnsw</index_type>
+            </configuration>
+            <metrics>
+                <vector_count>0</vector_count>
+                <total_searches>0</total_searches>
+                <last_updated>0.0</last_updated>
+                <cache_hits>0</cache_hits>
+                <avg_search_time>0.0</avg_search_time>
+            </metrics>
+            <integration>
+                <knowledge_graph>
+                    <vector_weight>0.6</vector_weight>
+                    <auto_update>true</auto_update>
+                    <sync_interval>60.0</sync_interval>
+                </knowledge_graph>
+                <context_management>
+                    <bidirectional_sync>true</bidirectional_sync>
+                    <context_embedding_dim>768</context_embedding_dim>
+                    <update_threshold>0.5</update_threshold>
+                </context_management>
+            </integration>
+            <persistence>
+                <save_interval>300</save_interval>
+                <backup_count>5</backup_count>
+                <compression>true</compression>
+            </persistence>
+        </vector_store>
+        // ... existing code ...
+    </knowledge_management>
+</SDLC_Orchestration>      <code_review>
+                <checklist>
+                    <item>Code style compliance</item>
+                    <item>Test coverage</item>
+                    <item>Documentation completeness</item>
+                </checklist>
+                <approvers>
+                    <required>2</required>
+                    <roles>
+                        <role>Senior Developer</role>
+                        <role>Tech Lead</role>
+                    </roles>
+                </approvers>
+            </code_review>
+            <deployment>
+                <requirements>
+                    <requirement>All tests passing</requirement>
+                    <requirement>Security scan complete</requirement>
+                    <requirement>Performance benchmarks met</requirement>
+                </requirements>
+            </deployment>
+        </quality_gates>
+    </common_attributes>
+
+    <!-- Workflows -->
+    <workflows>
+        <phases>
+            <phase>
+                <name>requirements</name>
+                <description>Gather and validate requirements</description>
+                <chains>
+                    <chain>chains/requirements_chain.md</chain>
+                    <chain>chains/feature_analysis_chain.md</chain>
+                </chains>
+            </phase>
+            <phase>
+                <name>architecture</name>
+                <description>High-level system architecture and technical decisions</description>
+                <chains>
+                    <chain>chains/architecture_chain.md</chain>
+                </chains>
+            </phase>
+            <phase>
+                <name>system_design</name>
+                <description>Detailed system design and component architecture</description>
+                <chains>
+                    <chain>chains/system_design_chain.md</chain>
+                    <chain>chains/component_library_chain.md</chain>
+                </chains>
+            </phase>
+            <phase>
+                <name>ux_research</name>
+                <description>User experience research and analysis</description>
+                <chains>
+                    <chain>chains/research_planning_chain.md</chain>
+                    <chain>chains/data_analysis_chain.md</chain>
+                </chains>
+            </phase>
+            <phase>
+                <name>ux_design</name>
+                <description>User experience design and flows</description>
+                <chains>
+                    <chain>chains/ux_design_chain.md</chain>
+                </chains>
+            </phase>
+            <phase>
+                <name>ui_design</name>
+                <description>User interface design and component specifications</description>
+                <chains>
+                    <chain>chains/ui_design_chain.md</chain>
+                </chains>
+            </phase>
+            <phase>
+                <name>development</name>
+                <description>Implementation and code development</description>
+                <chains>
+                    <chain>chains/code_generator_chain.md</chain>
+                    <chain>chains/code_quality_chain.md</chain>
+                    <chain>chains/code_improver_chain.md</chain>
+                </chains>
+            </phase>
+            <phase>
+                <name>testing</name>
+                <description>Testing and quality assurance</description>
+                <chains>
+                    <chain>chains/code_evaluation_chain.md</chain>
+                    <chain>chains/code_rater_chain.md</chain>
+                </chains>
+            </phase>
+            <phase>
+                <name>deployment</name>
+                <description>Deployment and release management</description>
+                <chains>
+                    <chain>chains/deployment_chain.md</chain>
+                    <chain>chains/release_management_chain.md</chain>
+                </chains>
+            </phase>
+        </phases>
+        <sequence>
+            <step>requirements</step>
+            <step>architecture</step>
+            <step>system_design</step>
+            <step>ux_research</step>
+            <step>ux_design</step>
+            <step>ui_design</step>
+            <step>development</step>
+            <step>testing</step>
+            <step>deployment</step>
+        </sequence>
+    </workflows>
+
+    <!-- Requirement Gathering -->
+    <requirement_gathering>
+        <agent>
+            <role>Requirements Clarification Specialist</role>
+            <responsibilities>
+                <responsibility>Identify unclear requirements proactively</responsibility>
+                <responsibility>Generate targeted clarifying questions</responsibility>
+                <responsibility>Document evolving requirements</responsibility>
+                <responsibility>Generate comprehensive spec documents</responsibility>
+            </responsibilities>
+        </agent>
+        <workflow>
+            <phases>
+                <initialization>
+                    <steps>
+                        <step>Await initial user stories or feature requests</step>
+                        <step>Analyze completeness of provided requirements</step>
+                        <step>Generate clarifying questions</step>
+                        <step>Document confirmed requirements</step>
+                    </steps>
+                </initialization>
+                <gathering>
+                    <questions>
+                        <question>What is the feature title?</question>
+                        <question>Please describe the feature in detail.</question>
+                        <question>Who are the primary users?</question>
+                        <question>What problem does this feature solve?</question>
+                        <question>What are the expected outcomes?</question>
+                        <question>Any technical constraints?</question>
+                        <question>Priority level? (High/Medium/Low)</question>
+                    </questions>
+                </gathering>
+                <spec_doc_generation>
+                    <command name="/generate_spec_doc">
+                        <description>Generate comprehensive specification document from feature request and user stories</description>
+                        <template>prompts/templates/spec_doc_generator_template.xml</template>
+                        <workflow>
+                            <steps>
+                                <step>
+                                    <name>Load Templates</name>
+                                    <actions>
+                                        <action>Load feature request template</action>
+                                        <action>Load user story template</action>
+                                        <action>Load spec doc generator template</action>
+                                    </actions>
+                                </step>
+                                <step>
+                                    <name>Parse Input Documents</name>
+                                    <actions>
+                                        <action>Parse feature request markdown</action>
+                                        <action>Parse user story markdown</action>
+                                        <action>Validate required fields</action>
+                                    </actions>
+                                </step>
+                                <step>
+                                    <name>Generate Spec Document</name>
+                                    <actions>
+                                        <action>Map feature request to spec template</action>
+                                        <action>Map user story to spec template</action>
+                                        <action>Generate comprehensive spec</action>
+                                    </actions>
+                                </step>
+                                <step>
+                                    <name>Validate Output</name>
+                                    <actions>
+                                        <action>Check completeness</action>
+                                        <action>Verify requirements coverage</action>
+                                        <action>Ensure traceability</action>
+                                    </actions>
+                                </step>
+                                <step>
+                                    <name>Save Documentation</name>
+                                    <actions>
+                                        <action>Save to .context/specs/</action>
+                                        <action>Update documentation index</action>
+                                        <action>Generate cross-reference links</action>
+                                    </actions>
+                                </step>
+                            </steps>
+                            <outputs>
+                                <output>
+                                    <file>.context/specs/comprehensive_spec.md</file>
+                                    <format>markdown</format>
+                                </output>
+                                <output>
+                                    <file>.context/specs/requirements_matrix.json</file>
+                                    <format>json</format>
+                                </output>
+                            </outputs>
+                        </workflow>
+                    </command>
+                </spec_doc_generation>
+            </phases>
+        </workflow>
+        <tools>
+            <tool>/init_requirements</tool>
+            <tool>/feature_map</tool>
+            <tool>/init_roadmap</tool>
+            <tool>/generate_spec_doc</tool>
+        </tools>
+        <chains>
+            <chain>chains/requirements_chain.md</chain>
+            <chain>chains/feature_analysis_chain.md</chain>
+            <chain>chains/spec_doc_generation_chain.md</chain>
+        </chains>
+    </requirement_gathering>
+
+    <!-- Design Management -->
+    <design_management>
+        <triggers>
+            <after_requirements_validation>
+                <action>/init_design_phase</action>
+                <description>Initialize design phase once PRD and requirements are finalized</description>
+                <validation>
+                    <check>Check PRD completeness</check>
+                    <check>Verify clarity of requirements</check>
+                    <check>Confirm stakeholder approval</check>
+                </validation>
+            </after_requirements_validation>
+        </triggers>
+        <phases>
+            <architecture_design>
+                <steps>
+                    <step>Define system architecture</step>
+                    <step>Create component diagrams</step>
+                    <step>Document integration points</step>
+                    <step>Specify data models</step>
+                </steps>
+                <deliverables>
+                    <deliverable>Architecture diagram</deliverable>
+                    <deliverable>Component specifications</deliverable>
+                    <deliverable>API contracts</deliverable>
+                </deliverables>
+            </architecture_design>
+            <ui_ux_design>
+                <steps>
+                    <step>Create wireframes</step>
+                    <step>Design user flows</step>
+                    <step>Develop UI components</step>
+                    <step>Define style guide</step>
+                </steps>
+                <deliverables>
+                    <deliverable>Wireframe mockups</deliverable>
+                    <deliverable>UI component library</deliverable>
+                    <deliverable>Style guide documentation</deliverable>
+                </deliverables>
+            </ui_ux_design>
+            <technical_design>
+                <steps>
+                    <step>Define technical requirements</step>
+                    <step>Create sequence diagrams</step>
+                    <step>Document algorithms</step>
+                    <step>Specify error handling</step>
+                </steps>
+                <deliverables>
+                    <deliverable>Technical design document</deliverable>
+                    <deliverable>Sequence diagrams</deliverable>
+                    <deliverable>Algorithm specifications</deliverable>
+                </deliverables>
+            </technical_design>
+        </phases>
+        <validation>
+            <reviews>
+                <review>Architecture review</review>
+                <review>Security review</review>
+                <review>Performance review</review>
+                <review>Accessibility review</review>
+            </reviews>
+            <approvals>
+                <approval>Technical lead sign-off</approval>
+                <approval>UX designer sign-off</approval>
+                <approval>Product owner sign-off</approval>
+            </approvals>
+        </validation>
+        <documentation>
+            <templates>
+                <template>Architecture design document</template>
+                <template>UI/UX specifications</template>
+                <template>Technical design specifications</template>
+                <template>API documentation</template>
+            </templates>
+            <storage>
+                <location>.context/design/</location>
+                <structure>
+                    <directory>architecture/</directory>
+                    <directory>ui-ux/</directory>
+                    <directory>technical/</directory>
+                    <directory>diagrams/</directory>
+                </structure>
+            </storage>
+        </documentation>
+    </design_management>
+
+    <!-- Development Management -->
+    <development_management>
+        <website>
+            <source>
+                <repository>https://github.com/kingler/ui.git</repository>
+                <branch>main</branch>
+            </source>
+            <atomic_design>
+                <structure>
+                    <directory>components/atoms</directory>
+                    <directory>components/molecules</directory>
+                    <directory>components/organisms</directory>
+                    <directory>components/templates</directory>
+                    <directory>components/pages</directory>
+                </structure>
+                <documentation>
+                    <directory>docs/api</directory>
+                    <directory>docs/guides</directory>
+                    <directory>docs/tutorials</directory>
+                    <directory>docs/examples</directory>
+                </documentation>
+            </atomic_design>
+            <setup>
+                <step>
+                    <name>Clone Repository</name>
+                    <action>
+                        <![CDATA[
+                        <execute_command>
+                            <command>git clone https://github.com/kingler/ui.git website</command>
+                        </execute_command>
+                        ]]>
+                    </action>
+                </step>
+                <step>
+                    <name>Install Dependencies</name>
+                    <action>
+                        <![CDATA[
+                        <execute_command>
+                            <command>cd website && npm install</command>
+                        </execute_command>
+                        ]]>
+                    </action>
+                </step>
+                <step>
+                    <name>Setup Atomic Design Structure</name>
+                    <action>
+                        <![CDATA[
+                        <execute_command>
+                            <command>
+                            mkdir -p website/components/{atoms,molecules,organisms,templates,pages} &amp;&amp; \
+                            mkdir -p website/docs/{api,guides,tutorials,examples}
+                            </command>
+                        </execute_command>
+                        ]]>
+                    </action>
+                </step>
+            </setup>
+            <commands>
+                <command name="/website_dev">
+                    <description>Start website development server</description>
+                    <workflow>
+                        <step>cd website</step>
+                        <step>npm run dev</step>
+                    </workflow>
+                </command>
+                <command name="/website_build">
+                    <description>Build website for production</description>
+                    <workflow>
+                        <step>cd website</step>
+                        <step>npm run build</step>
+                    </workflow>
+                </command>
+                <command name="/website_preview">
+                    <description>Preview production build</description>
+                    <workflow>
+                        <step>cd website</step>
+                        <step>npm run preview</step>
+                    </workflow>
+                </command>
+                <command name="/generate_component_docs">
+                    <description>Generate component documentation</description>
+                    <workflow>
+                        <step>Extract component metadata</step>
+                        <step>Generate API documentation</step>
+                        <step>Create usage examples</step>
+                        <step>Build component previews</step>
+                        <step>Generate Page layout for atom components</step>
+                        <step>Generate Page layout for molecule components</step>
+                        <step>Generate Page layout for organism components</step>
+                        <step>Generate Page layout for template components</step>
+                        <step>Generate Page layout for page components</step>
+                    </workflow>
+                </command>
+            </commands>
+        </website>
+        <development>
+            <commands>
+                <command name="/dev_init">
+                    <description>Set up the development environment</description>
+                    <workflow>
+                        <step>Environment setup (install dependencies, configure tools)</step>
+                        <step>Code scaffolding (generate initial structure)</step>
+                        <step>Testing framework initialization</step>
+                    </workflow>
+                </command>
+                <command name="/dev_build">
+                    <description>Build the project for production</description>
+                    <workflow>
+                        <step>Clean build directory</step>
+                        <step>Compile source code</step>
+                        <step>Bundle assets</step>
+                        <step>Generate source maps</step>
+                        <step>Run post-build optimizations</step>
+                    </workflow>
+                </command>
+                <command name="/dev_test">
+                    <description>Run test suites and generate coverage reports</description>
+                    <workflow>
+                        <step>Run unit tests</step>
+                        <step>Run integration tests</step>
+                        <step>Run end-to-end tests</step>
+                        <step>Generate test coverage reports</step>
+                    </workflow>
+                </command>
+                <command name="/dev_lint">
+                    <description>Run code linting and formatting checks</description>
+                    <workflow>
+                        <step>Run code linter</step>
+                        <step>Check code formatting</step>
+                        <step>Validate coding standards</step>
+                        <step>Generate linting report</step>
+                    </workflow>
+                </command>
+                <command name="/dev_docs">
+                    <description>Generate and update development documentation</description>
+                    <workflow>
+                        <step>Generate API documentation</step>
+                        <step>Update code documentation</step>
+                        <step>Generate dependency graphs</step>
+                        <step>Update development guides</step>
+                    </workflow>
+                </command>
+                <command name="/dev_deploy">
+                    <description>Deploy application to specified environment</description>
+                    <workflow>
+                        <step>Validate environment configuration</step>
+                        <step>Run pre-deployment checks</step>
+                        <step>Deploy application</step>
+                        <step>Run post-deployment verification</step>
+                    </workflow>
+                </command>
+                <command name="/dev_debug">
+                    <description>Start application in debug mode</description>
+                    <workflow>
+                        <step>Configure debug environment</step>
+                        <step>Start debugger</step>
+                        <step>Enable logging</step>
+                        <step>Monitor application state</step>
+                    </workflow>
+                </command>
+            </commands>
+        </development>
+        <file_operations>
+            <read_file_action>
+                <description>Read file contents using Cline's read_file tool</description>
+                <workflow>
+                    <step>
+                        <name>Read File</name>
+                        <action>
+                            <![CDATA[
+                            <read_file>
+                                <path>${target_file}</path>
+                            </read_file>
+                            ]]>
+                        </action>
+                        <requires_confirmation>true</requires_confirmation>
+                    </step>
+                </workflow>
+            </read_file_action>
+            <write_file_action>
+                <description>Write to file using Cline's write_to_file tool</description>
+                <workflow>
+                    <step>
+                        <name>Write File</name>
+                        <action>
+                            <![CDATA[
+                            <write_to_file>
+                                <path>${target_file}</path>
+                                <content>${file_content}</content>
+                            </write_to_file>
+                            ]]>
+                        </action>
+                        <requires_confirmation>true</requires_confirmation>
+                    </step>
+                </workflow>
+            </write_file_action>
+            <search_files_action>
+                <description>Search files using Cline's search_files tool</description>
+                <workflow>
+                    <step>
+                        <name>Search Files</name>
+                        <action>
+                            <![CDATA[
+                            <search_files>
+                                <path>${search_path}</path>
+                                <regex>${search_pattern}</regex>
+                            </search_files>
+                            ]]>
+                        </action>
+                        <requires_confirmation>true</requires_confirmation>
+                    </step>
+                </workflow>
+            </search_files_action>
+        </file_operations>
+    </development_management>
+
+    <!-- Document Management -->
+    <document_management>
+        <directories>
+            <cline_docs>cline_docs/</cline_docs>
+            <internal_docs>
+                <doc>
+                    <name>project_roadmap.md</name>
+                    <purpose>Track high-level goals, progress, and milestones</purpose>
+                </doc>
+                <doc>
+                    <name>architecture.md</name>
+                    <purpose>Document system architecture, components and technical decisions</purpose>
+                </doc>
+                <doc>
+                    <name>api_docs.md</name>
+                    <purpose>API documentation and integration guides</purpose>
+                </doc>
+                <doc>
+                    <name>development_guide.md</name>
+                    <purpose>Development setup, workflows and best practices</purpose>
+                </doc>
+                <doc>
+                    <name>requirements.md</name>
+                    <purpose>Functional and non-functional requirements specification</purpose>
+                </doc>
+                <doc>
+                    <name>testing_strategy.md</name>
+                    <purpose>Testing approach, test cases and quality assurance procedures</purpose>
+                </doc>
+                <doc>
+                    <name>deployment.md</name>
+                    <purpose>Deployment procedures, environments and configuration</purpose>
+                </doc>
+                <doc>
+                    <name>changelog.md</name>
+                    <purpose>Version history and release notes</purpose>
+                </doc>
+                <doc>
+                    <name>contributing.md</name>
+                    <purpose>Guidelines for contributing to the project</purpose>
+                </doc>
+                <doc>
+                    <name>security.md</name>
+                    <purpose>Security policies, procedures and best practices</purpose>
+                </doc>
+                <doc>
+                    <name>troubleshooting.md</name>
+                    <purpose>Common issues and debugging guides</purpose>
+                </doc>
+            </internal_docs>
+        </directories>
+        <!-- Additional document management sections... -->
+    </document_management>
+
+    <artifact_management>
+        <dynamic_artifact_component>
+            <description>Dynamic artifact area that transforms based on user prompts and model determination</description>
+            <modes>
+                <mode>
+                    <name>markdown_editor</name>
+                    <description>Full-featured markdown editor for documentation and text content</description>
+                    <implementation>
+                        <library>@uiw/react-md-editor</library>
+                        <features>
+                            <feature>Live preview</feature>
+                            <feature>Syntax highlighting</feature>
+                            <feature>Custom toolbar</feature>
+                            <feature>Image uploads</feature>
+                        </features>
+                    </implementation>
+                </mode>
+                <mode>
+                    <name>code_editor</name>
+                    <description>Browser-based code editor with terminal access using WebContainers</description>
+                    <implementation>
+                        <components>
+                            <component>
+                                <name>Monaco Editor</name>
+                                <library>@monaco-editor/react</library>
+                                <features>
+                                    <feature>Syntax highlighting</feature>
+                                    <feature>IntelliSense</feature>
+                                    <feature>Multiple language support</feature>
+                                </features>
+                            </component>
+                            <component>
+                                <name>WebContainer Terminal</name>
+                                <library>@webcontainer/api</library>
+                                <features>
+                                    <feature>In-browser Node.js environment</feature>
+                                    <feature>File system access</feature>
+                                    <feature>Terminal emulation</feature>
+                                    <feature>Package management</feature>
+                                </features>
+                            </component>
+                        </components>
+                    </implementation>
+                </mode>
+                <mode>
+                    <name>diagram_modeling</name>
+                    <description>Interactive diagram modeling tool using ReactFlow</description>
+                    <implementation>
+                        <library>reactflow</library>
+                        <features>
+                            <feature>Custom nodes and edges</feature>
+                            <feature>Interactive connections</feature>
+                            <feature>Zoom and pan controls</feature>
+                            <feature>Layout algorithms</feature>
+                            <feature>Undo/redo functionality</feature>
+                        </features>
+                        <node_types>
+                            <type>System components</type>
+                            <type>Services</type>
+                            <type>Data flows</type>
+                            <type>Integration points</type>
+                        </node_types>
+                    </implementation>
+                </mode>
+                <mode>
+                    <name>database_modeling</name>
+                    <description>Database schema modeling tool using ReactFlow</description>
+                    <implementation>
+                        <library>reactflow</library>
+                        <features>
+                            <feature>Entity relationship diagrams</feature>
+                            <feature>Schema visualization</feature>
+                            <feature>Relationship mapping</feature>
+                            <feature>Data type definitions</feature>
+                        </features>
+                        <node_types>
+                            <type>Tables</type>
+                            <type>Relationships</type>
+                            <type>Fields</type>
+                            <type>Constraints</type>
+                        </node_types>
+                    </implementation>
+                </mode>
+                <mode>
+                    <name>graphic_design</name>
+                    <description>Graphic design and image generation workspace</description>
+                    <implementation>
+                        <components>
+                            <component>
+                                <name>Canvas Editor</name>
+                                <library>fabric.js</library>
+                                <features>
+                                    <feature>Vector graphics</feature>
+                                    <feature>Image manipulation</feature>
+                                    <feature>Layer management</feature>
+                                </features>
+                            </component>
+                            <component>
+                                <name>Image Generation</name>
+                                <integration>Stable Diffusion API</integration>
+                                <features>
+                                    <feature>Text-to-image generation</feature>
+                                    <feature>Image variations</feature>
+                                    <feature>Style transfer</feature>
+                                </features>
+                            </component>
+                        </components>
+                    </implementation>
+                </mode>
+            </modes>
+            <mode_selection>
+                <workflow>
+                    <step>
+                        <name>Analyze User Prompt</name>
+                        <action>analyze_prompt</action>
+                        <rules>
+                            <rule>
+                                <pattern>documentation, text, notes, markdown</pattern>
+                                <select_mode>markdown_editor</select_mode>
+                            </rule>
+                            <rule>
+                                <pattern>code, development, programming, terminal</pattern>
+                                <select_mode>code_editor</select_mode>
+                            </rule>
+                            <rule>
+                                <pattern>diagram, flowchart, architecture, system design</pattern>
+                                <select_mode>diagram_modeling</select_mode>
+                            </rule>
+                            <rule>
+                                <pattern>database, schema, erd, data model</pattern>
+                                <select_mode>database_modeling</select_mode>
+                            </rule>
+                            <rule>
+                                <pattern>image, design, graphic, visual</pattern>
+                                <select_mode>graphic_design</select_mode>
+                            </rule>
+                        </rules>
+                    </step>
+                    <step>
+                        <name>Initialize Selected Mode</name>
+                        <action>init_artifact_mode</action>
+                        <parameters>
+                            <param>selected_mode</param>
+                            <param>initial_content</param>
+                            <param>configuration</param>
+                        </parameters>
+                    </step>
+                </workflow>
+            </mode_selection>
+            <state_management>
+                <shared_state>
+                    <field>current_mode</field>
+                    <field>artifact_content</field>
+                    <field>mode_specific_config</field>
+                    <field>user_preferences</field>
+                </shared_state>
+                <persistence>
+                    <save_location>.context/artifacts/</save_location>
+                    <format>JSON</format>
+                    <versioning>true</versioning>
+                </persistence>
+            </state_management>
+            <integration>
+                <neo_commands>
+                    <command>/switch_artifact_mode</command>
+                    <command>/save_artifact</command>
+                    <command>/load_artifact</command>
+                    <command>/export_artifact</command>
+                </neo_commands>
+                <cline_tools>
+                    <tool>read_file</tool>
+                    <tool>write_to_file</tool>
+                    <tool>execute_command</tool>
+                </cline_tools>
+            </integration>
+        </dynamic_artifact_component>
+    </artifact_management>
+
+    <website_management>
+        <ui_project>
+            <source>
+                <repository>https://github.com/kingler/ui.git</repository>
+                <branch>main</branch>
+            </source>
+            <setup>
+                <commands>
+                    <command>
+                        <name>Clone Repository</name>
+                        <action>
+                            <![CDATA[
+                            <execute_command>
+                                <command>git clone https://github.com/kingler/ui.git website</command>
+                            </execute_command>
+                            ]]>
+                        </action>
+                    </command>
+                    <command>
+                        <name>Install Dependencies</name>
+                        <action>
+                            <![CDATA[
+                            <execute_command>
+                                <command>cd website && npm install</command>
+                            </execute_command>
+                            ]]>
+                        </action>
+                    </command>
+                    <command>
+                        <name>Setup Atomic Design Structure</name>
+                        <action>
+                            <![CDATA[
+                            <execute_command>
+                                <command>
+                                mkdir -p website/components/{atoms,molecules,organisms,templates,pages} &amp;&amp; \
+                                mkdir -p website/docs/{api,guides,tutorials,examples}
+                                </command>
+                            </execute_command>
+                            ]]>
+                        </action>
+                    </command>
+                </commands>
+            </setup>
+            <development>
+                <scripts>
+                    <script>
+                        <name>dev</name>
+                        <command>npm run dev</command>
+                        <description>Start development server</description>
+                    </script>
+                    <script>
+                        <name>build</name>
+                        <command>npm run build</command>
+                        <description>Build production website</description>
+                    </script>
+                    <script>
+                        <name>preview</name>
+                        <command>npm run preview</command>
+                        <description>Preview production build</description>
+                    </script>
+                </scripts>
+                <environment>
+                    <variables>
+                        <variable>
+                            <name>NEXT_PUBLIC_API_URL</name>
+                            <value>${api_url}</value>
+                        </variable>
+                        <variable>
+                            <name>NEXT_PUBLIC_ASSETS_URL</name>
+                            <value>${assets_url}</value>
+                        </variable>
+                    </variables>
+                </environment>
+            </development>
+            <components>
+                <atomic_design>
+                    <atoms>
+                        <component>
+                            <name>Button</name>
+                            <path>components/atoms/Button</path>
+                            <variants>
+                                <variant>Primary</variant>
+                                <variant>Secondary</variant>
+                                <variant>Tertiary</variant>
+                            </variants>
+                        </component>
+                        <component>
+                            <name>Input</name>
+                            <path>components/atoms/Input</path>
+                            <variants>
+                                <variant>Text</variant>
+                                <variant>Number</variant>
+                                <variant>Password</variant>
+                            </variants>
+                        </component>
+                    </atoms>
+                    <molecules>
+                        <component>
+                            <name>SearchBar</name>
+                            <path>components/molecules/SearchBar</path>
+                            <composition>
+                                <atom>Input</atom>
+                                <atom>Button</atom>
+                            </composition>
+                        </component>
+                        <component>
+                            <name>FormField</name>
+                            <path>components/molecules/FormField</path>
+                            <composition>
+                                <atom>Label</atom>
+                                <atom>Input</atom>
+                                <atom>ValidationMessage</atom>
+                            </composition>
+                        </component>
+                    </molecules>
+                    <organisms>
+                        <component>
+                            <name>NavigationBar</name>
+                            <path>components/organisms/NavigationBar</path>
+                            <composition>
+                                <molecule>SearchBar</molecule>
+                                <atom>Logo</atom>
+                                <molecule>MenuItems</molecule>
+                            </composition>
+                        </component>
+                        <component>
+                            <name>ComponentViewer</name>
+                            <path>components/organisms/ComponentViewer</path>
+                            <features>
+                                <feature>Live preview</feature>
+                                <feature>Code view</feature>
+                                <feature>Props table</feature>
+                                <feature>Documentation</feature>
+                            </features>
+                        </component>
+                    </organisms>
+                    <templates>
+                        <component>
+                            <name>DocumentationLayout</name>
+                            <path>components/templates/DocumentationLayout</path>
+                            <composition>
+                                <organism>NavigationBar</organism>
+                                <organism>Sidebar</organism>
+                                <organism>ContentArea</organism>
+                                <organism>Footer</organism>
+                            </composition>
+                        </component>
+                        <component>
+                            <name>ComponentLayout</name>
+                            <path>components/templates/ComponentLayout</path>
+                            <composition>
+                                <organism>NavigationBar</organism>
+                                <organism>ComponentViewer</organism>
+                                <organism>PropsEditor</organism>
+                            </composition>
+                        </component>
+                    </templates>
+                </atomic_design>
+            </components>
+            <documentation>
+                <structure>
+                    <section>
+                        <name>Getting Started</name>
+                        <path>docs/guides/getting-started.md</path>
+                        <content_template>
+                            <![CDATA[
+                            # Getting Started
+                            
+                            ## Installation
+                            ```bash
+                            npm install @project/ui
+                            ```
+                            
+                            ## Basic Usage
+                            ```jsx
+                            import { Button } from '@project/ui'
+                            
+                            function App() {
+                              return <Button variant="primary">Click me</Button>
+                            }
+                            ```
+                            ]]>
+                        </content_template>
+                    </section>
+                    <section>
+                        <name>Component Documentation</name>
+                        <path>docs/api/components/</path>
+                        <auto_generate>true</auto_generate>
+                        <template>
+                            <![CDATA[
+                            # ${component_name}
+                            
+                            ${component_description}
+                            
+                            ## Props
+                            ${props_table}
+                            
+                            ## Examples
+                            ${examples}
+                            
+                            ## Best Practices
+                            ${best_practices}
+                            ]]>
+                        </template>
+                    </section>
+                </structure>
+                <generation>
+                    <command>/generate_docs</command>
+                    <workflow>
+                        <step>Extract component metadata</step>
+                        <step>Generate API documentation</step>
+                        <step>Create usage examples</step>
+                        <step>Build component previews</step>
+                    </workflow>
+                </generation>
+            </documentation>
+            <deployment>
+                <environments>
+                    <environment>
+                        <name>development</name>
+                        <url>http://localhost:3000</url>
+                        <command>npm run dev</command>
+                    </environment>
+                    <environment>
+                        <name>staging</name>
+                        <url>https://staging.project-website.com</url>
+                        <command>npm run build &amp;&amp; npm run preview</command>
+                    </environment>
+                    <environment>
+                        <name>production</name>
+                        <url>https://project-website.com</url>
+                        <command>npm run build</command>
+                    </environment>
+                </environments>
+                <static_generation>
+                    <enabled>true</enabled>
+                    <cache_strategy>stale-while-revalidate</cache_strategy>
+                    <revalidate>3600</revalidate>
+                </static_generation>
+            </deployment>
+        </ui_project>
+    </website_management>
+
+    <repository_structure>
+        <root>
+            <directory name="src">
+                <description>Source code and components</description>
+                <atomic_design>
+                    <directory name="components">
+                        <directory name="atoms">
+                            <description>Basic building blocks (buttons, inputs, etc.)</description>
+                            <patterns>
+                                <pattern>Button</pattern>
+                                <pattern>Input</pattern>
+                                <pattern>Typography</pattern>
+                                <pattern>Icon</pattern>
+                            </patterns>
+                        </directory>
+                        <directory name="molecules">
+                            <description>Simple combinations of atoms</description>
+                            <patterns>
+                                <pattern>SearchBar</pattern>
+                                <pattern>FormField</pattern>
+                                <pattern>Card</pattern>
+                                <pattern>Navigation</pattern>
+                            </patterns>
+                        </directory>
+                        <directory name="organisms">
+                            <description>Complex UI components</description>
+                            <patterns>
+                                <pattern>Header</pattern>
+                                <pattern>Footer</pattern>
+                                <pattern>Sidebar</pattern>
+                                <pattern>Forms</pattern>
+                            </patterns>
+                        </directory>
+                        <directory name="templates">
+                            <description>Page layouts and structures</description>
+                            <patterns>
+                                <pattern>DefaultLayout</pattern>
+                                <pattern>DashboardLayout</pattern>
+                                <pattern>DocumentationLayout</pattern>
+                            </patterns>
+                        </directory>
+                        <directory name="pages">
+                            <description>Complete page implementations</description>
+                            <patterns>
+                                <pattern>HomePage</pattern>
+                                <pattern>DocumentationPage</pattern>
+                                <pattern>ComponentsPage</pattern>
+                            </patterns>
+                        </directory>
+                    </directory>
+                </atomic_design>
+            </directory>
+
+            <directory name=".context">
+                <description>Project context and documentation</description>
+                <structure>
+                    <directory name="requirements">
+                        <description>Project requirements and specifications</description>
+                        <files>
+                            <file>project_overview.md</file>
+                            <file>functional_requirements.md</file>
+                            <file>non_functional_requirements.md</file>
+                            <file>user_stories.md</file>
+                        </files>
+                    </directory>
+                    <directory name="architecture">
+                        <description>System architecture and design decisions</description>
+                        <files>
+                            <file>system_architecture.md</file>
+                            <file>component_architecture.md</file>
+                            <file>data_flow.md</file>
+                            <file>integration_points.md</file>
+                        </files>
+                    </directory>
+                    <directory name="design">
+                        <description>Design system and UI/UX documentation</description>
+                        <files>
+                            <file>design_system.md</file>
+                            <file>style_guide.md</file>
+                            <file>component_patterns.md</file>
+                            <file>accessibility.md</file>
+                        </files>
+                    </directory>
+                    <directory name="docs">
+                        <description>Generated and maintained documentation</description>
+                        <subdirectories>
+                            <directory name="api">
+                                <description>API documentation</description>
+                            </directory>
+                            <directory name="guides">
+                                <description>User and developer guides</description>
+                            </directory>
+                            <directory name="examples">
+                                <description>Code examples and usage patterns</description>
+                            </directory>
+                        </subdirectories>
+                    </directory>
+                    <directory name="diagrams">
+                        <description>Visual documentation and diagrams</description>
+                        <files>
+                            <file>component_hierarchy.svg</file>
+                            <file>data_flow.svg</file>
+                            <file>system_architecture.svg</file>
+                        </files>
+                    </directory>
+                    <directory name="deliverables">
+                        <description>Project deliverables and artifacts</description>
+                        <subdirectories>
+                            <directory name="specifications">
+                                <description>Detailed specifications and PRDs</description>
+                            </directory>
+                            <directory name="reports">
+                                <description>Progress reports and analytics</description>
+                            </directory>
+                            <directory name="presentations">
+                                <description>Project presentations and demos</description>
+                            </directory>
+                        </subdirectories>
+                    </directory>
+                </structure>
+            </directory>
+
+            <directory name="scripts">
+                <description>Build and automation scripts</description>
+                <files>
+                    <file>generate_docs.js</file>
+                    <file>build_components.js</file>
+                    <file>update_context.js</file>
+                </files>
+            </directory>
+        </root>
+
+        <conventions>   
+            <naming>
+                <rule>Use PascalCase for component names</rule>
+                <rule>Use kebab-case for file names</rule>
+                <rule>Use camelCase for variable names</rule>
+            </naming>
+            <formatting>
+                <rule>Use 2 spaces for indentation</rule>
+                <rule>Use single quotes for strings</rule>

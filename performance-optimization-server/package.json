@@ -1,0 +1,29 @@
+{
+  "name": "performance-optimization-server",
+  "version": "1.0.0",
+  "description": "MCP server for analyzing and improving system performance",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "start": "node build/index.js",
+    "dev": "ts-node --esm src/index.ts",
+    "test": "jest"
+  },
+  "keywords": [
+    "mcp",
+    "performance",
+    "optimization",
+    "analysis"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "ts-node": "latest",
+    "typescript": "latest"
+  }
+}

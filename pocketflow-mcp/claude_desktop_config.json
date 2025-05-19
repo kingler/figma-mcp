@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "pocketflow": {
+      "command": "node",
+      "args": ["pocketflow-mcp/dist/mcp-server.js"],
+      "env": {
+        "PYTHON_PATH": "python"
+      },
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}

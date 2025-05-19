@@ -1,0 +1,30 @@
+{
+  "name": "wordpress-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for WordPress admin functionality",
+  "main": "build/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "start": "node build/index.js",
+    "dev": "tsc -w"
+  },
+  "keywords": [
+    "mcp",
+    "wordpress",
+    "headless",
+    "cms"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.7.0",
+    "axios": "^1.6.0",
+    "form-data": "^4.0.0",
+    "server-wp-mcp": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.10",
+    "typescript": "^5.2.2"
+  }
+}

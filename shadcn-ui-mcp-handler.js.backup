@@ -1,0 +1,103 @@
+#!/usr/bin/env node
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { z } from "zod";
+import { exec } from "child_process";
+import util from "util";
+
+const execPromise = util.promisify(exec);
+
+// Create an MCP server
+const server = new McpServer({
+  name: "ShadcnUIManager",
+  version: "1.0.0",
+  description: "Manages shadcn/ui components via the CLI."
+});
+
+// Tool to add a single component
+server.tool("add_component",
+  {
+    componentName: z.string().describe("Name of the shadcn/ui component to add (e.g., 'button', 'card')."),
+    projectRoot: z.string().describe("Absolute path to the root of the target project."),
+    overwrite: z.boolean().optional().default(false).describe("Whether to overwrite existing files."),
+    pathAlias: z.string().optional().describe("Custom path alias for the component (corresponds to --path).")
+  },
+  async ({ componentName, projectRoot, overwrite, pathAlias }) => {
+    let command = `npx shadcn@latest add ${componentName} --cwd \"${projectRoot}\" --yes`;
+    if (overwrite) {
+      command += " --overwrite";
+    }
+    if (pathAlias) {
+      command += ` --path \"${pathAlias}\"`;
+    }
+
+    try {
+      const { stdout, stderr } = await execPromise(command);
+      let output = "";
+      if (stdout) output += `Stdout:\n${stdout}\n`;
+      if (stderr) output += `Stderr:\n${stderr}\n`;
+      if (!stdout && !stderr) output = "Command executed successfully, no output.";
+      return { content: [{ type: "text", text: output || "Component addition process completed." }] };
+    } catch (error) {
+      return { content: [{ type: "text", text: `Error executing shadcn-ui add command: ${error.message}\nStderr: ${error.stderr || 'N/A'}\nStdout: ${error.stdout || 'N/A'}` }] };
+    }
+  }
+);
+
+const atomicComponentMap = {
+  atoms: ["button", "input", "label", "badge", "avatar", "separator", "typography", "aspect-ratio", "scroll-area"],
+  molecules: ["form", "select", "checkbox", "radio-group", "switch", "textarea", "tooltip", "dropdown-menu", "context-menu"],
+  organisms: ["table", "card", "tabs", "accordion", "alert", "alert-dialog", "dialog", "toast", "navigation-menu", "command", "sheet"],
+  templates: ["collapsible", "popover", "hover-card"]
+};
+
+// Tool to add a package of components based on atomic design type
+server.tool("add_atomic_package",
+  {
+    atomicType: z.enum(["atoms", "molecules", "organisms", "templates"]).describe("The atomic design category of components to add."),
+    projectRoot: z.string().describe("Absolute path to the root of the target project."),
+    components: z.array(z.string()).optional().describe("Specific list of components within the atomic type to install. If omitted, all defaults for the type are installed.")
+  },
+  async ({ atomicType, projectRoot, components: specificComponents }) => {
+    let componentsToAdd = [];
+    const defaultComponentsForType = atomicComponentMap[atomicType];
+
+    if (specificComponents && specificComponents.length > 0) {
+      componentsToAdd = specificComponents.filter(comp => defaultComponentsForType.includes(comp));
+      if (componentsToAdd.length === 0) {
+        return { content: [{ type: "text", text: `No valid components specified for atomic type '${atomicType}'. Valid options are: ${defaultComponentsForType.join(', ')}`}] };
+      }
+    } else {
+      componentsToAdd = defaultComponentsForType;
+    }
+
+    if (componentsToAdd.length === 0) {
+      return { content: [{ type: "text", text: `No components found to install for atomic type '${atomicType}'.` }] };
+    }
+
+    const componentsString = componentsToAdd.join(" ");
+    const command = `npx shadcn@latest add ${componentsString} --cwd \"${projectRoot}\" --yes`;
+
+    try {
+      const { stdout, stderr } = await execPromise(command);
+      let output = "";
+      if (stdout) output += `Stdout:\n${stdout}\n`;
+      if (stderr) output += `Stderr:\n${stderr}\n`;
+      if (!stdout && !stderr) output = "Command executed successfully, no output.";
+      return { content: [{ type: "text", text: output || `Atomic package '${atomicType}' components (${componentsString}) addition process completed.` }] };
+    } catch (error) {
+      return { content: [{ type: "text", text: `Error executing shadcn-ui add command for atomic package: ${error.message}\nStderr: ${error.stderr || 'N/A'}\nStdout: ${error.stdout || 'N/A'}` }] };
+    }
+  }
+);
+
+async function main() {
+  const transport = new StdioServerTransport();
+  await server.connect(transport);
+  console.error("Shadcn UI MCP Server connected and listening via Stdio."); // MCP uses stderr for logs
+}
+
+main().catch(error => {
+  console.error("Failed to start Shadcn UI MCP Server:", error);
+  process.exit(1);
+}); 

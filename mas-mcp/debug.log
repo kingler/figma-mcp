@@ -1,0 +1,2789 @@
+[2025-05-18T17:06:40.129Z] ListTools request received
+[2025-05-18T17:06:40.129Z] ListTools response:
+{
+  "tools": [
+    {
+      "name": "create_triple",
+      "description": "Create a new knowledge triple",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "Subject of the triple"
+          },
+          "predicate": {
+            "type": "string",
+            "description": "Predicate of the triple"
+          },
+          "object": {
+            "type": "string",
+            "description": "Object of the triple"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Confidence score (0-1)"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source of the knowledge"
+          },
+          "context": {
+            "type": "string",
+            "description": "Context of the triple"
+          }
+        },
+        "required": [
+          "subject",
+          "predicate",
+          "object",
+          "confidence",
+          "source",
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "add_fact",
+      "description": "Add a new fact to the knowledge base",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "statement": {
+            "type": "string",
+            "description": "The fact statement"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Supporting evidence"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Confidence score (0-1)"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source of the fact"
+          },
+          "references": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Related references"
+          }
+        },
+        "required": [
+          "statement",
+          "evidence",
+          "confidence",
+          "source"
+        ]
+      }
+    },
+    {
+      "name": "add_rule",
+      "description": "Add a new inference rule",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the rule"
+          },
+          "condition": {
+            "type": "string",
+            "description": "Rule condition"
+          },
+          "consequence": {
+            "type": "string",
+            "description": "Rule consequence"
+          },
+          "priority": {
+            "type": "number",
+            "description": "Rule priority (0-10)"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Domain of the rule"
+          },
+          "description": {
+            "type": "string",
+            "description": "Rule description"
+          },
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Example applications"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Rule tags"
+          }
+        },
+        "required": [
+          "name",
+          "condition",
+          "consequence",
+          "priority",
+          "domain",
+          "description"
+        ]
+      }
+    },
+    {
+      "name": "validate_fact",
+      "description": "Validate a fact against the knowledge base",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "statement": {
+            "type": "string",
+            "description": "Statement to validate"
+          }
+        },
+        "required": [
+          "statement"
+        ]
+      }
+    },
+    {
+      "name": "apply_rules",
+      "description": "Apply inference rules to a given context",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "context": {
+            "type": "string",
+            "description": "Context to evaluate"
+          }
+        },
+        "required": [
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "deductive_reasoning",
+      "description": "Perform deductive reasoning from premises to conclusion",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "premises": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of premise statements"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Knowledge domain"
+          }
+        },
+        "required": [
+          "premises",
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "inductive_reasoning",
+      "description": "Perform inductive reasoning from examples to general rule",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of example cases"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Minimum confidence threshold (0-1)"
+          }
+        },
+        "required": [
+          "examples",
+          "confidence"
+        ]
+      }
+    },
+    {
+      "name": "abductive_reasoning",
+      "description": "Generate best explanation for observations",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "observations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of observations"
+          },
+          "context": {
+            "type": "string",
+            "description": "Reasoning context"
+          }
+        },
+        "required": [
+          "observations",
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "analyze_options",
+      "description": "Analyze decision options with trade-offs",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of available options"
+          },
+          "criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Evaluation criteria"
+          },
+          "context": {
+            "type": "string",
+            "description": "Decision context"
+          }
+        },
+        "required": [
+          "options",
+          "criteria",
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "risk_assessment",
+      "description": "Assess risks for a given scenario",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "scenario": {
+            "type": "string",
+            "description": "Scenario description"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Risk domain"
+          },
+          "factors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Relevant risk factors"
+          }
+        },
+        "required": [
+          "scenario",
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "ethical_validation",
+      "description": "Validate a decision against ethical principles",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "decision": {
+            "type": "string",
+            "description": "Decision to validate"
+          },
+          "principles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Ethical principles to consider"
+          },
+          "context": {
+            "type": "string",
+            "description": "Decision context"
+          }
+        },
+        "required": [
+          "decision",
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "apply_mental_model",
+      "description": "Apply a specific mental model to analyze a situation",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "Mental model to apply"
+          },
+          "situation": {
+            "type": "string",
+            "description": "Situation description"
+          },
+          "objective": {
+            "type": "string",
+            "description": "Analysis objective"
+          }
+        },
+        "required": [
+          "model",
+          "situation",
+          "objective"
+        ]
+      }
+    },
+    {
+      "name": "generate_solutions",
+      "description": "Generate multiple solution candidates for a problem",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "problem": {
+            "type": "string",
+            "description": "Problem description"
+          },
+          "count": {
+            "type": "integer",
+            "description": "Number of solutions to generate"
+          },
+          "criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Evaluation criteria"
+          }
+        },
+        "required": [
+          "problem",
+          "count"
+        ]
+      }
+    },
+    {
+      "name": "evaluate_solution",
+      "description": "Evaluate a solution against quality criteria",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "solution": {
+            "type": "string",
+            "description": "Solution to evaluate"
+          },
+          "criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Evaluation criteria"
+          },
+          "context": {
+            "type": "string",
+            "description": "Evaluation context"
+          }
+        },
+        "required": [
+          "solution",
+          "criteria"
+        ]
+      }
+    },
+    {
+      "name": "sequential_analysis",
+      "description": "Perform step-by-step analysis of a complex problem",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "problem": {
+            "type": "string",
+            "description": "Problem description"
+          },
+          "steps": {
+            "type": "integer",
+            "description": "Maximum number of steps"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Knowledge domain"
+          }
+        },
+        "required": [
+          "problem",
+          "steps"
+        ]
+      }
+    },
+    {
+      "name": "extract_knowledge",
+      "description": "Extract knowledge triples from text using LLM",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Text to extract knowledge from"
+          },
+          "context": {
+            "type": "string",
+            "description": "Optional context to guide extraction"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    },
+    {
+      "name": "update_domain_ontology",
+      "description": "Update domain ontology with new concepts and relationships",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "Domain to update ontology for"
+          },
+          "existingConcepts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of existing concepts in the domain"
+          }
+        },
+        "required": [
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "validate_knowledge_consistency",
+      "description": "Validate if new knowledge is consistent with existing knowledge",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "newFact": {
+            "type": "string",
+            "description": "New fact to validate"
+          },
+          "existingFacts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of existing facts to check against"
+          }
+        },
+        "required": [
+          "newFact"
+        ]
+      }
+    },
+    {
+      "name": "enrich_ontology_from_web",
+      "description": "Enrich domain ontology by crawling relevant web pages",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "Domain to enrich ontology for"
+          },
+          "searchTerms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Specific search terms to use (optional)"
+          },
+          "maxResults": {
+            "type": "number",
+            "description": "Maximum number of web pages to crawl (default: 5)"
+          }
+        },
+        "required": [
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "connect_domains",
+      "description": "Create hyperedge connecting concepts across domains",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sourceNode": {
+            "type": "string",
+            "description": "Source concept node"
+          },
+          "targetNodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Target concept nodes to connect to"
+          },
+          "relationship": {
+            "type": "string",
+            "description": "Relationship label"
+          },
+          "domains": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Domains involved in this connection"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Confidence score (0-1)"
+          }
+        },
+        "required": [
+          "sourceNode",
+          "targetNodes",
+          "relationship",
+          "domains"
+        ]
+      }
+    },
+    {
+      "name": "update_world_model",
+      "description": "Dynamically update the world model with new concepts and relationships",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "concepts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "concept": {
+                  "type": "string"
+                },
+                "domain": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "New concepts to add to the world model"
+          },
+          "relationships": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "target": {
+                  "type": "string"
+                },
+                "relationship": {
+                  "type": "string"
+                },
+                "confidence": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "New relationships between concepts"
+          }
+        },
+        "required": [
+          "concepts",
+          "relationships"
+        ]
+      }
+    },
+    {
+      "name": "expand_problem_context",
+      "description": "Expand problem-solving context by traversing ontology connections",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "concepts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Seed concepts to start exploration from"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Source domain (e.g., sdlc, world)"
+          },
+          "task": {
+            "type": "string",
+            "description": "Task description to guide relevance filtering"
+          },
+          "maxDepth": {
+            "type": "number",
+            "description": "Maximum traversal depth (default: 2)"
+          },
+          "minConfidence": {
+            "type": "number",
+            "description": "Minimum confidence threshold (0-1)"
+          }
+        },
+        "required": [
+          "concepts",
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "get_sdlc_world_connections",
+      "description": "Get connections between SDLC concepts and world knowledge",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sdlcConcepts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "SDLC concepts to find world connections for"
+          },
+          "task": {
+            "type": "string",
+            "description": "Task description to guide relevance filtering"
+          }
+        },
+        "required": [
+          "sdlcConcepts"
+        ]
+      }
+    }
+  ]
+}
+[2025-05-18T17:09:03.767Z] ListTools request received
+[2025-05-18T17:09:03.769Z] ListTools response:
+{
+  "tools": [
+    {
+      "name": "create_triple",
+      "description": "Create a new knowledge triple",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "Subject of the triple"
+          },
+          "predicate": {
+            "type": "string",
+            "description": "Predicate of the triple"
+          },
+          "object": {
+            "type": "string",
+            "description": "Object of the triple"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Confidence score (0-1)"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source of the knowledge"
+          },
+          "context": {
+            "type": "string",
+            "description": "Context of the triple"
+          }
+        },
+        "required": [
+          "subject",
+          "predicate",
+          "object",
+          "confidence",
+          "source",
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "add_fact",
+      "description": "Add a new fact to the knowledge base",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "statement": {
+            "type": "string",
+            "description": "The fact statement"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Supporting evidence"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Confidence score (0-1)"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source of the fact"
+          },
+          "references": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Related references"
+          }
+        },
+        "required": [
+          "statement",
+          "evidence",
+          "confidence",
+          "source"
+        ]
+      }
+    },
+    {
+      "name": "add_rule",
+      "description": "Add a new inference rule",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the rule"
+          },
+          "condition": {
+            "type": "string",
+            "description": "Rule condition"
+          },
+          "consequence": {
+            "type": "string",
+            "description": "Rule consequence"
+          },
+          "priority": {
+            "type": "number",
+            "description": "Rule priority (0-10)"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Domain of the rule"
+          },
+          "description": {
+            "type": "string",
+            "description": "Rule description"
+          },
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Example applications"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Rule tags"
+          }
+        },
+        "required": [
+          "name",
+          "condition",
+          "consequence",
+          "priority",
+          "domain",
+          "description"
+        ]
+      }
+    },
+    {
+      "name": "validate_fact",
+      "description": "Validate a fact against the knowledge base",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "statement": {
+            "type": "string",
+            "description": "Statement to validate"
+          }
+        },
+        "required": [
+          "statement"
+        ]
+      }
+    },
+    {
+      "name": "apply_rules",
+      "description": "Apply inference rules to a given context",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "context": {
+            "type": "string",
+            "description": "Context to evaluate"
+          }
+        },
+        "required": [
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "deductive_reasoning",
+      "description": "Perform deductive reasoning from premises to conclusion",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "premises": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of premise statements"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Knowledge domain"
+          }
+        },
+        "required": [
+          "premises",
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "inductive_reasoning",
+      "description": "Perform inductive reasoning from examples to general rule",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of example cases"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Minimum confidence threshold (0-1)"
+          }
+        },
+        "required": [
+          "examples",
+          "confidence"
+        ]
+      }
+    },
+    {
+      "name": "abductive_reasoning",
+      "description": "Generate best explanation for observations",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "observations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of observations"
+          },
+          "context": {
+            "type": "string",
+            "description": "Reasoning context"
+          }
+        },
+        "required": [
+          "observations",
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "analyze_options",
+      "description": "Analyze decision options with trade-offs",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of available options"
+          },
+          "criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Evaluation criteria"
+          },
+          "context": {
+            "type": "string",
+            "description": "Decision context"
+          }
+        },
+        "required": [
+          "options",
+          "criteria",
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "risk_assessment",
+      "description": "Assess risks for a given scenario",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "scenario": {
+            "type": "string",
+            "description": "Scenario description"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Risk domain"
+          },
+          "factors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Relevant risk factors"
+          }
+        },
+        "required": [
+          "scenario",
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "ethical_validation",
+      "description": "Validate a decision against ethical principles",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "decision": {
+            "type": "string",
+            "description": "Decision to validate"
+          },
+          "principles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Ethical principles to consider"
+          },
+          "context": {
+            "type": "string",
+            "description": "Decision context"
+          }
+        },
+        "required": [
+          "decision",
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "apply_mental_model",
+      "description": "Apply a specific mental model to analyze a situation",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "Mental model to apply"
+          },
+          "situation": {
+            "type": "string",
+            "description": "Situation description"
+          },
+          "objective": {
+            "type": "string",
+            "description": "Analysis objective"
+          }
+        },
+        "required": [
+          "model",
+          "situation",
+          "objective"
+        ]
+      }
+    },
+    {
+      "name": "generate_solutions",
+      "description": "Generate multiple solution candidates for a problem",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "problem": {
+            "type": "string",
+            "description": "Problem description"
+          },
+          "count": {
+            "type": "integer",
+            "description": "Number of solutions to generate"
+          },
+          "criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Evaluation criteria"
+          }
+        },
+        "required": [
+          "problem",
+          "count"
+        ]
+      }
+    },
+    {
+      "name": "evaluate_solution",
+      "description": "Evaluate a solution against quality criteria",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "solution": {
+            "type": "string",
+            "description": "Solution to evaluate"
+          },
+          "criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Evaluation criteria"
+          },
+          "context": {
+            "type": "string",
+            "description": "Evaluation context"
+          }
+        },
+        "required": [
+          "solution",
+          "criteria"
+        ]
+      }
+    },
+    {
+      "name": "sequential_analysis",
+      "description": "Perform step-by-step analysis of a complex problem",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "problem": {
+            "type": "string",
+            "description": "Problem description"
+          },
+          "steps": {
+            "type": "integer",
+            "description": "Maximum number of steps"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Knowledge domain"
+          }
+        },
+        "required": [
+          "problem",
+          "steps"
+        ]
+      }
+    },
+    {
+      "name": "extract_knowledge",
+      "description": "Extract knowledge triples from text using LLM",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Text to extract knowledge from"
+          },
+          "context": {
+            "type": "string",
+            "description": "Optional context to guide extraction"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    },
+    {
+      "name": "update_domain_ontology",
+      "description": "Update domain ontology with new concepts and relationships",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "Domain to update ontology for"
+          },
+          "existingConcepts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of existing concepts in the domain"
+          }
+        },
+        "required": [
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "validate_knowledge_consistency",
+      "description": "Validate if new knowledge is consistent with existing knowledge",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "newFact": {
+            "type": "string",
+            "description": "New fact to validate"
+          },
+          "existingFacts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of existing facts to check against"
+          }
+        },
+        "required": [
+          "newFact"
+        ]
+      }
+    },
+    {
+      "name": "enrich_ontology_from_web",
+      "description": "Enrich domain ontology by crawling relevant web pages",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "Domain to enrich ontology for"
+          },
+          "searchTerms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Specific search terms to use (optional)"
+          },
+          "maxResults": {
+            "type": "number",
+            "description": "Maximum number of web pages to crawl (default: 5)"
+          }
+        },
+        "required": [
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "connect_domains",
+      "description": "Create hyperedge connecting concepts across domains",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sourceNode": {
+            "type": "string",
+            "description": "Source concept node"
+          },
+          "targetNodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Target concept nodes to connect to"
+          },
+          "relationship": {
+            "type": "string",
+            "description": "Relationship label"
+          },
+          "domains": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Domains involved in this connection"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Confidence score (0-1)"
+          }
+        },
+        "required": [
+          "sourceNode",
+          "targetNodes",
+          "relationship",
+          "domains"
+        ]
+      }
+    },
+    {
+      "name": "update_world_model",
+      "description": "Dynamically update the world model with new concepts and relationships",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "concepts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "concept": {
+                  "type": "string"
+                },
+                "domain": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "New concepts to add to the world model"
+          },
+          "relationships": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "target": {
+                  "type": "string"
+                },
+                "relationship": {
+                  "type": "string"
+                },
+                "confidence": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "New relationships between concepts"
+          }
+        },
+        "required": [
+          "concepts",
+          "relationships"
+        ]
+      }
+    },
+    {
+      "name": "expand_problem_context",
+      "description": "Expand problem-solving context by traversing ontology connections",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "concepts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Seed concepts to start exploration from"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Source domain (e.g., sdlc, world)"
+          },
+          "task": {
+            "type": "string",
+            "description": "Task description to guide relevance filtering"
+          },
+          "maxDepth": {
+            "type": "number",
+            "description": "Maximum traversal depth (default: 2)"
+          },
+          "minConfidence": {
+            "type": "number",
+            "description": "Minimum confidence threshold (0-1)"
+          }
+        },
+        "required": [
+          "concepts",
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "get_sdlc_world_connections",
+      "description": "Get connections between SDLC concepts and world knowledge",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sdlcConcepts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "SDLC concepts to find world connections for"
+          },
+          "task": {
+            "type": "string",
+            "description": "Task description to guide relevance filtering"
+          }
+        },
+        "required": [
+          "sdlcConcepts"
+        ]
+      }
+    }
+  ]
+}
+[2025-05-18T17:28:55.028Z] ListTools request received
+[2025-05-18T17:28:55.030Z] ListTools response:
+{
+  "tools": [
+    {
+      "name": "create_triple",
+      "description": "Create a new knowledge triple",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "Subject of the triple"
+          },
+          "predicate": {
+            "type": "string",
+            "description": "Predicate of the triple"
+          },
+          "object": {
+            "type": "string",
+            "description": "Object of the triple"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Confidence score (0-1)"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source of the knowledge"
+          },
+          "context": {
+            "type": "string",
+            "description": "Context of the triple"
+          }
+        },
+        "required": [
+          "subject",
+          "predicate",
+          "object",
+          "confidence",
+          "source",
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "add_fact",
+      "description": "Add a new fact to the knowledge base",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "statement": {
+            "type": "string",
+            "description": "The fact statement"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Supporting evidence"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Confidence score (0-1)"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source of the fact"
+          },
+          "references": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Related references"
+          }
+        },
+        "required": [
+          "statement",
+          "evidence",
+          "confidence",
+          "source"
+        ]
+      }
+    },
+    {
+      "name": "add_rule",
+      "description": "Add a new inference rule",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the rule"
+          },
+          "condition": {
+            "type": "string",
+            "description": "Rule condition"
+          },
+          "consequence": {
+            "type": "string",
+            "description": "Rule consequence"
+          },
+          "priority": {
+            "type": "number",
+            "description": "Rule priority (0-10)"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Domain of the rule"
+          },
+          "description": {
+            "type": "string",
+            "description": "Rule description"
+          },
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Example applications"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Rule tags"
+          }
+        },
+        "required": [
+          "name",
+          "condition",
+          "consequence",
+          "priority",
+          "domain",
+          "description"
+        ]
+      }
+    },
+    {
+      "name": "validate_fact",
+      "description": "Validate a fact against the knowledge base",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "statement": {
+            "type": "string",
+            "description": "Statement to validate"
+          }
+        },
+        "required": [
+          "statement"
+        ]
+      }
+    },
+    {
+      "name": "apply_rules",
+      "description": "Apply inference rules to a given context",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "context": {
+            "type": "string",
+            "description": "Context to evaluate"
+          }
+        },
+        "required": [
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "deductive_reasoning",
+      "description": "Perform deductive reasoning from premises to conclusion",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "premises": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of premise statements"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Knowledge domain"
+          }
+        },
+        "required": [
+          "premises",
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "inductive_reasoning",
+      "description": "Perform inductive reasoning from examples to general rule",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of example cases"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Minimum confidence threshold (0-1)"
+          }
+        },
+        "required": [
+          "examples",
+          "confidence"
+        ]
+      }
+    },
+    {
+      "name": "abductive_reasoning",
+      "description": "Generate best explanation for observations",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "observations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of observations"
+          },
+          "context": {
+            "type": "string",
+            "description": "Reasoning context"
+          }
+        },
+        "required": [
+          "observations",
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "analyze_options",
+      "description": "Analyze decision options with trade-offs",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of available options"
+          },
+          "criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Evaluation criteria"
+          },
+          "context": {
+            "type": "string",
+            "description": "Decision context"
+          }
+        },
+        "required": [
+          "options",
+          "criteria",
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "risk_assessment",
+      "description": "Assess risks for a given scenario",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "scenario": {
+            "type": "string",
+            "description": "Scenario description"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Risk domain"
+          },
+          "factors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Relevant risk factors"
+          }
+        },
+        "required": [
+          "scenario",
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "ethical_validation",
+      "description": "Validate a decision against ethical principles",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "decision": {
+            "type": "string",
+            "description": "Decision to validate"
+          },
+          "principles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Ethical principles to consider"
+          },
+          "context": {
+            "type": "string",
+            "description": "Decision context"
+          }
+        },
+        "required": [
+          "decision",
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "apply_mental_model",
+      "description": "Apply a specific mental model to analyze a situation",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "Mental model to apply"
+          },
+          "situation": {
+            "type": "string",
+            "description": "Situation description"
+          },
+          "objective": {
+            "type": "string",
+            "description": "Analysis objective"
+          }
+        },
+        "required": [
+          "model",
+          "situation",
+          "objective"
+        ]
+      }
+    },
+    {
+      "name": "generate_solutions",
+      "description": "Generate multiple solution candidates for a problem",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "problem": {
+            "type": "string",
+            "description": "Problem description"
+          },
+          "count": {
+            "type": "integer",
+            "description": "Number of solutions to generate"
+          },
+          "criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Evaluation criteria"
+          }
+        },
+        "required": [
+          "problem",
+          "count"
+        ]
+      }
+    },
+    {
+      "name": "evaluate_solution",
+      "description": "Evaluate a solution against quality criteria",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "solution": {
+            "type": "string",
+            "description": "Solution to evaluate"
+          },
+          "criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Evaluation criteria"
+          },
+          "context": {
+            "type": "string",
+            "description": "Evaluation context"
+          }
+        },
+        "required": [
+          "solution",
+          "criteria"
+        ]
+      }
+    },
+    {
+      "name": "sequential_analysis",
+      "description": "Perform step-by-step analysis of a complex problem",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "problem": {
+            "type": "string",
+            "description": "Problem description"
+          },
+          "steps": {
+            "type": "integer",
+            "description": "Maximum number of steps"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Knowledge domain"
+          }
+        },
+        "required": [
+          "problem",
+          "steps"
+        ]
+      }
+    },
+    {
+      "name": "extract_knowledge",
+      "description": "Extract knowledge triples from text using LLM",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Text to extract knowledge from"
+          },
+          "context": {
+            "type": "string",
+            "description": "Optional context to guide extraction"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    },
+    {
+      "name": "update_domain_ontology",
+      "description": "Update domain ontology with new concepts and relationships",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "Domain to update ontology for"
+          },
+          "existingConcepts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of existing concepts in the domain"
+          }
+        },
+        "required": [
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "validate_knowledge_consistency",
+      "description": "Validate if new knowledge is consistent with existing knowledge",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "newFact": {
+            "type": "string",
+            "description": "New fact to validate"
+          },
+          "existingFacts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of existing facts to check against"
+          }
+        },
+        "required": [
+          "newFact"
+        ]
+      }
+    },
+    {
+      "name": "enrich_ontology_from_web",
+      "description": "Enrich domain ontology by crawling relevant web pages",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "Domain to enrich ontology for"
+          },
+          "searchTerms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Specific search terms to use (optional)"
+          },
+          "maxResults": {
+            "type": "number",
+            "description": "Maximum number of web pages to crawl (default: 5)"
+          }
+        },
+        "required": [
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "connect_domains",
+      "description": "Create hyperedge connecting concepts across domains",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sourceNode": {
+            "type": "string",
+            "description": "Source concept node"
+          },
+          "targetNodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Target concept nodes to connect to"
+          },
+          "relationship": {
+            "type": "string",
+            "description": "Relationship label"
+          },
+          "domains": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Domains involved in this connection"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Confidence score (0-1)"
+          }
+        },
+        "required": [
+          "sourceNode",
+          "targetNodes",
+          "relationship",
+          "domains"
+        ]
+      }
+    },
+    {
+      "name": "update_world_model",
+      "description": "Dynamically update the world model with new concepts and relationships",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "concepts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "concept": {
+                  "type": "string"
+                },
+                "domain": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "New concepts to add to the world model"
+          },
+          "relationships": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "target": {
+                  "type": "string"
+                },
+                "relationship": {
+                  "type": "string"
+                },
+                "confidence": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "New relationships between concepts"
+          }
+        },
+        "required": [
+          "concepts",
+          "relationships"
+        ]
+      }
+    },
+    {
+      "name": "expand_problem_context",
+      "description": "Expand problem-solving context by traversing ontology connections",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "concepts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Seed concepts to start exploration from"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Source domain (e.g., sdlc, world)"
+          },
+          "task": {
+            "type": "string",
+            "description": "Task description to guide relevance filtering"
+          },
+          "maxDepth": {
+            "type": "number",
+            "description": "Maximum traversal depth (default: 2)"
+          },
+          "minConfidence": {
+            "type": "number",
+            "description": "Minimum confidence threshold (0-1)"
+          }
+        },
+        "required": [
+          "concepts",
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "get_sdlc_world_connections",
+      "description": "Get connections between SDLC concepts and world knowledge",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sdlcConcepts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "SDLC concepts to find world connections for"
+          },
+          "task": {
+            "type": "string",
+            "description": "Task description to guide relevance filtering"
+          }
+        },
+        "required": [
+          "sdlcConcepts"
+        ]
+      }
+    }
+  ]
+}
+[2025-05-18T17:30:20.043Z] ListTools request received
+[2025-05-18T17:30:20.049Z] ListTools response:
+{
+  "tools": [
+    {
+      "name": "create_triple",
+      "description": "Create a new knowledge triple",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "subject": {
+            "type": "string",
+            "description": "Subject of the triple"
+          },
+          "predicate": {
+            "type": "string",
+            "description": "Predicate of the triple"
+          },
+          "object": {
+            "type": "string",
+            "description": "Object of the triple"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Confidence score (0-1)"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source of the knowledge"
+          },
+          "context": {
+            "type": "string",
+            "description": "Context of the triple"
+          }
+        },
+        "required": [
+          "subject",
+          "predicate",
+          "object",
+          "confidence",
+          "source",
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "add_fact",
+      "description": "Add a new fact to the knowledge base",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "statement": {
+            "type": "string",
+            "description": "The fact statement"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Supporting evidence"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Confidence score (0-1)"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source of the fact"
+          },
+          "references": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Related references"
+          }
+        },
+        "required": [
+          "statement",
+          "evidence",
+          "confidence",
+          "source"
+        ]
+      }
+    },
+    {
+      "name": "add_rule",
+      "description": "Add a new inference rule",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the rule"
+          },
+          "condition": {
+            "type": "string",
+            "description": "Rule condition"
+          },
+          "consequence": {
+            "type": "string",
+            "description": "Rule consequence"
+          },
+          "priority": {
+            "type": "number",
+            "description": "Rule priority (0-10)"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Domain of the rule"
+          },
+          "description": {
+            "type": "string",
+            "description": "Rule description"
+          },
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Example applications"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Rule tags"
+          }
+        },
+        "required": [
+          "name",
+          "condition",
+          "consequence",
+          "priority",
+          "domain",
+          "description"
+        ]
+      }
+    },
+    {
+      "name": "validate_fact",
+      "description": "Validate a fact against the knowledge base",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "statement": {
+            "type": "string",
+            "description": "Statement to validate"
+          }
+        },
+        "required": [
+          "statement"
+        ]
+      }
+    },
+    {
+      "name": "apply_rules",
+      "description": "Apply inference rules to a given context",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "context": {
+            "type": "string",
+            "description": "Context to evaluate"
+          }
+        },
+        "required": [
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "deductive_reasoning",
+      "description": "Perform deductive reasoning from premises to conclusion",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "premises": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of premise statements"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Knowledge domain"
+          }
+        },
+        "required": [
+          "premises",
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "inductive_reasoning",
+      "description": "Perform inductive reasoning from examples to general rule",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "examples": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of example cases"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Minimum confidence threshold (0-1)"
+          }
+        },
+        "required": [
+          "examples",
+          "confidence"
+        ]
+      }
+    },
+    {
+      "name": "abductive_reasoning",
+      "description": "Generate best explanation for observations",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "observations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of observations"
+          },
+          "context": {
+            "type": "string",
+            "description": "Reasoning context"
+          }
+        },
+        "required": [
+          "observations",
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "analyze_options",
+      "description": "Analyze decision options with trade-offs",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of available options"
+          },
+          "criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Evaluation criteria"
+          },
+          "context": {
+            "type": "string",
+            "description": "Decision context"
+          }
+        },
+        "required": [
+          "options",
+          "criteria",
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "risk_assessment",
+      "description": "Assess risks for a given scenario",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "scenario": {
+            "type": "string",
+            "description": "Scenario description"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Risk domain"
+          },
+          "factors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Relevant risk factors"
+          }
+        },
+        "required": [
+          "scenario",
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "ethical_validation",
+      "description": "Validate a decision against ethical principles",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "decision": {
+            "type": "string",
+            "description": "Decision to validate"
+          },
+          "principles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Ethical principles to consider"
+          },
+          "context": {
+            "type": "string",
+            "description": "Decision context"
+          }
+        },
+        "required": [
+          "decision",
+          "context"
+        ]
+      }
+    },
+    {
+      "name": "apply_mental_model",
+      "description": "Apply a specific mental model to analyze a situation",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "description": "Mental model to apply (e.g., second_order_thinking, inversion, expected_value, systems_thinking, first_principles)"
+          },
+          "situation": {
+            "type": "string",
+            "description": "Situation description"
+          },
+          "objective": {
+            "type": "string",
+            "description": "Analysis objective"
+          }
+        },
+        "required": [
+          "model",
+          "situation",
+          "objective"
+        ]
+      }
+    },
+    {
+      "name": "analogical_reasoning",
+      "description": "Perform analogical reasoning to map patterns from a source domain to a target domain",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sourceDomain": {
+            "type": "string",
+            "description": "Source domain description"
+          },
+          "targetDomain": {
+            "type": "string",
+            "description": "Target domain description"
+          },
+          "mappingCriteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Criteria for establishing mappings"
+          }
+        },
+        "required": [
+          "sourceDomain",
+          "targetDomain"
+        ]
+      }
+    },
+    {
+      "name": "causal_reasoning",
+      "description": "Perform causal reasoning to analyze cause-effect relationships",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "situation": {
+            "type": "string",
+            "description": "Situation to analyze"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Domain context"
+          },
+          "depth": {
+            "type": "integer",
+            "description": "Depth of causal chain analysis (default: 3)"
+          }
+        },
+        "required": [
+          "situation",
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "generate_solutions",
+      "description": "Generate multiple solution candidates for a problem and select the best one",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "problem": {
+            "type": "string",
+            "description": "Problem description"
+          },
+          "count": {
+            "type": "integer",
+            "description": "Number of solutions to generate"
+          },
+          "criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Evaluation criteria"
+          }
+        },
+        "required": [
+          "problem",
+          "count"
+        ]
+      }
+    },
+    {
+      "name": "evaluate_solution",
+      "description": "Evaluate a solution against quality criteria",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "solution": {
+            "type": "string",
+            "description": "Solution to evaluate"
+          },
+          "criteria": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Evaluation criteria"
+          },
+          "context": {
+            "type": "string",
+            "description": "Evaluation context"
+          }
+        },
+        "required": [
+          "solution",
+          "criteria"
+        ]
+      }
+    },
+    {
+      "name": "sequential_analysis",
+      "description": "Perform step-by-step analysis of a complex problem",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "problem": {
+            "type": "string",
+            "description": "Problem description"
+          },
+          "steps": {
+            "type": "integer",
+            "description": "Maximum number of steps"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Knowledge domain"
+          }
+        },
+        "required": [
+          "problem",
+          "steps"
+        ]
+      }
+    },
+    {
+      "name": "extract_knowledge",
+      "description": "Extract knowledge triples from text using LLM",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "Text to extract knowledge from"
+          },
+          "context": {
+            "type": "string",
+            "description": "Optional context to guide extraction"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    },
+    {
+      "name": "update_domain_ontology",
+      "description": "Update domain ontology with new concepts and relationships",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "Domain to update ontology for"
+          },
+          "existingConcepts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of existing concepts in the domain"
+          }
+        },
+        "required": [
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "validate_knowledge_consistency",
+      "description": "Validate if new knowledge is consistent with existing knowledge",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "newFact": {
+            "type": "string",
+            "description": "New fact to validate"
+          },
+          "existingFacts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "List of existing facts to check against"
+          }
+        },
+        "required": [
+          "newFact"
+        ]
+      }
+    },
+    {
+      "name": "enrich_ontology_from_web",
+      "description": "Enrich domain ontology by crawling relevant web pages",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "description": "Domain to enrich ontology for"
+          },
+          "searchTerms": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Specific search terms to use (optional)"
+          },
+          "maxResults": {
+            "type": "number",
+            "description": "Maximum number of web pages to crawl (default: 5)"
+          }
+        },
+        "required": [
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "connect_domains",
+      "description": "Create hyperedge connecting concepts across domains",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sourceNode": {
+            "type": "string",
+            "description": "Source concept node"
+          },
+          "targetNodes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Target concept nodes to connect to"
+          },
+          "relationship": {
+            "type": "string",
+            "description": "Relationship label"
+          },
+          "domains": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Domains involved in this connection"
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Confidence score (0-1)"
+          }
+        },
+        "required": [
+          "sourceNode",
+          "targetNodes",
+          "relationship",
+          "domains"
+        ]
+      }
+    },
+    {
+      "name": "update_world_model",
+      "description": "Dynamically update the world model with new concepts and relationships",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "concepts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "concept": {
+                  "type": "string"
+                },
+                "domain": {
+                  "type": "string"
+                }
+              }
+            },
+            "description": "New concepts to add to the world model"
+          },
+          "relationships": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": {
+                  "type": "string"
+                },
+                "target": {
+                  "type": "string"
+                },
+                "relationship": {
+                  "type": "string"
+                },
+                "confidence": {
+                  "type": "number"
+                }
+              }
+            },
+            "description": "New relationships between concepts"
+          }
+        },
+        "required": [
+          "concepts",
+          "relationships"
+        ]
+      }
+    },
+    {
+      "name": "expand_problem_context",
+      "description": "Expand problem-solving context by traversing ontology connections",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "concepts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Seed concepts to start exploration from"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Source domain (e.g., sdlc, world)"
+          },
+          "task": {
+            "type": "string",
+            "description": "Task description to guide relevance filtering"
+          },
+          "maxDepth": {
+            "type": "number",
+            "description": "Maximum traversal depth (default: 2)"
+          },
+          "minConfidence": {
+            "type": "number",
+            "description": "Minimum confidence threshold (0-1)"
+          }
+        },
+        "required": [
+          "concepts",
+          "domain"
+        ]
+      }
+    },
+    {
+      "name": "get_sdlc_world_connections",
+      "description": "Get connections between SDLC concepts and world knowledge",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sdlcConcepts": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "SDLC concepts to find world connections for"
+          },
+          "task": {
+            "type": "string",
+            "description": "Task description to guide relevance filtering"
+          }
+        },
+        "required": [
+          "sdlcConcepts"
+        ]
+      }
+    }
+  ]
+}

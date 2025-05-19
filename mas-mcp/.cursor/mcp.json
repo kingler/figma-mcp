@@ -1,0 +1,49 @@
+{
+  "mcpClient": {
+    "enabled": true,
+    "servers": [
+      {
+        "name": "neo-mas-sdlc-mcp",
+        "alwaysAllow": [
+          "neo_orchestrator_initialize",
+          "neo_orchestrator_activate_agent",
+          "neo_orchestrator_get_agent_status",
+          "neo_orchestrator_run_agent_action",
+          "neo_orchestrator_update_knowledge_graph",
+          "neo_orchestrator_query_knowledge_graph",
+          "sparc_generate_document",
+          "sparc_workflow_start",
+          "sparc_workflow_status",
+          "sparc_phase_start",
+          "sparc_phase_approve",
+          "sparc_phase_reject",
+          "sparc_document_get",
+          "cqof_initialize",
+          "cqof_validate_code",
+          "cqof_add_knowledge",
+          "cqof_query_knowledge",
+          "cqof_analyze_file",
+          "cqof_generate_recommendation",
+          "cqof_export_knowledge",
+          "cqof_update_from_repository",
+          "cqof_integrate_with_sparc",
+          "ui_designer_generate_component",
+          "ui_designer_generate_theme",
+          "ui_designer_get_tailwind_classes",
+          "ui_designer_create_color_palette",
+          "ui_designer_create_text_style",
+          "validateRule",
+          "validateRules",
+          "getRule",
+          "getRulesByPhase",
+          "getProof",
+          "getProofHistory",
+          "generateRulesReport",
+          "markProofVerified",
+          "getRuleStats"
+        ]
+      }
+    ]
+  },
+  "env": {}
+}

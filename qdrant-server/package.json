@@ -1,0 +1,22 @@
+{
+  "name": "qdrant-server",
+  "version": "0.1.0",
+  "description": "MCP server for QDRANT vector database",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "qdrant-server": "index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@qdrant/js-client-rest": "^1.13.0",
+    "axios": "^1.6.2",
+    "dotenv": "^16.4.7",
+    "openai": "^4.86.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

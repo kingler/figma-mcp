@@ -1,0 +1,22 @@
+{
+  "name": "openapi-management-server",
+  "version": "1.0.0",
+  "description": "MCP server for OpenAPI specification management and transformation",
+  "main": "build/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "start": "node build/index.js",
+    "dev": "tsc -w"
+  },
+  "keywords": ["mcp", "openapi", "api", "transformer"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.1.0",
+    "@types/node": "^20.0.0",
+    "axios": "^1.6.0",
+    "puppeteer": "^21.0.0",
+    "typescript": "^5.0.0"
+  }
+}

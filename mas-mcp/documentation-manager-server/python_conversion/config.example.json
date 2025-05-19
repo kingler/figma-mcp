@@ -1,0 +1,24 @@
+{
+    "llm": {
+        "provider": "anthropic",
+        "model": "claude-3-sonnet-20240229",
+        "max_tokens": 4000,
+        "temperature": 0.7
+    },
+    "database": {
+        "use_in_memory": true,
+        "supabase_url": null,
+        "supabase_key": null
+    },
+    "agents": {
+        "lead_agent": "documentation_manager",
+        "enabled_agents": [
+            "technical_writer",
+            "knowledge_base_manager",
+            "automation_engineer",
+            "quality_analyst",
+            "version_control_specialist",
+            "documentation_devops"
+        ]
+    }
+} 
