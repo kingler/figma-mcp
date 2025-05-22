@@ -93,9 +93,12 @@ export async function runIterativeChain(
     // Interpolate variables into prompt (simple replace, can be improved)
     let filledPrompt = prompt;
     for (const [key, value] of Object.entries(vars)) {
-      const token = `{{${key}}}}`;
+      const token = `{{${key}}}`;
       // Use a function replacement to avoid `$` expansion
       filledPrompt = filledPrompt.split(token).join(String(value));
+    }
+    const model = llm.getModel();
+    const maxTokens = llm.getMaxTokens();
     const temperature = llm.getTemperature();
     const anthropic = llm.getAnthropic();
     const response = await anthropic.messages.create({
